@@ -21,8 +21,8 @@ created: 2026-03-28
 | Preset | not applicable |
 | Component library | none (vanilla HTML sections) |
 | Icon library | Heroicons (inline SVG, copy-paste) |
-| Heading font | Space Grotesk (Google Fonts, weights 500 + 700) |
-| Body font | Inter (Google Fonts, weights 400 + 500 + 600) |
+| Heading font | Space Grotesk (Google Fonts, weight 700) |
+| Body font | Inter (Google Fonts, weight 400) |
 | Animation | GSAP 3.14.2 + ScrollTrigger (CDN) |
 | CSS Framework | Tailwind CSS v4 -- CDN for dev, Standalone CLI for production |
 
@@ -41,10 +41,10 @@ Declared values (multiples of 4, used via Tailwind utilities):
 | xl | 32px | `p-8`, `gap-8` | Section horizontal padding (mobile) |
 | 2xl | 48px | `py-12` | Section vertical padding (mobile) |
 | 3xl | 64px | `py-16` | Section vertical padding (tablet) |
-| 4xl | 96px | `py-24` | Section vertical padding (desktop) |
-| 5xl | 128px | `py-32` | Hero section vertical padding (desktop) |
 
 Exceptions:
+- 96px (`py-24`): Section vertical padding on desktop (>= 1024px) -- large display sections need generous breathing room to separate content blocks on wide screens
+- 128px (`py-32`): Hero section vertical padding on desktop (>= 1280px) -- hero is full-viewport-height; extra padding ensures headline sits comfortably centered with ample whitespace above and below
 - Touch targets on CTA buttons: minimum 48px height (`h-12`) for mobile tap accuracy
 - Nav bar height: 80px (`h-20`) to give the logo and links breathing room
 - Scroll padding top: 80px (`scroll-pt-20`) to account for sticky nav on anchor jumps
@@ -53,18 +53,19 @@ Exceptions:
 
 ## Typography
 
-All sizes use Tailwind's built-in scale. The system is mobile-first; desktop overrides use `md:` and `lg:` prefixes.
+All sizes use Tailwind's built-in scale. The system is mobile-first; desktop overrides use `md:` and `lg:` prefixes. Only 2 weights are used: 400 (regular) and 700 (bold).
 
-| Role | Mobile Size | Desktop Size | Weight | Line Height | Font | Tailwind Classes |
-|------|-------------|--------------|--------|-------------|------|------------------|
-| Display (hero H1) | 36px (`text-4xl`) | 72px (`lg:text-7xl`) | 700 (`font-bold`) | 1.1 (`leading-tight`) | Space Grotesk | `font-heading text-4xl lg:text-7xl font-bold leading-tight` |
-| Heading (section H2) | 30px (`text-3xl`) | 48px (`lg:text-5xl`) | 700 (`font-bold`) | 1.2 (`leading-tight`) | Space Grotesk | `font-heading text-3xl lg:text-5xl font-bold leading-tight` |
-| Subheading (H3) | 24px (`text-2xl`) | 30px (`lg:text-3xl`) | 500 (`font-medium`) | 1.3 | Space Grotesk | `font-heading text-2xl lg:text-3xl font-medium` |
-| Body | 18px (`text-lg`) | 20px (`md:text-xl`) | 400 (`font-normal`) | 1.6 (`leading-relaxed`) | Inter | `font-body text-lg md:text-xl font-normal leading-relaxed` |
-| Body emphasis | 18px (`text-lg`) | 20px (`md:text-xl`) | 600 (`font-semibold`) | 1.6 (`leading-relaxed`) | Inter | `font-body text-lg md:text-xl font-semibold leading-relaxed` |
-| CTA button | 18px (`text-lg`) | 20px (`md:text-xl`) | 700 (`font-bold`) | 1.0 | Space Grotesk | `font-heading text-lg md:text-xl font-bold` |
-| Nav link | 16px (`text-base`) | 16px (`text-base`) | 500 (`font-medium`) | 1.0 | Inter | `font-body text-base font-medium` |
-| Small / legal | 14px (`text-sm`) | 14px (`text-sm`) | 400 (`font-normal`) | 1.5 | Inter | `font-body text-sm font-normal` |
+| Role | Size Token | Mobile Size | Desktop Size | Weight | Line Height | Font | Tailwind Classes |
+|------|------------|-------------|--------------|--------|-------------|------|------------------|
+| Display (hero H1) | display | 36px (`text-4xl`) | 72px (`lg:text-7xl`) | 700 (`font-bold`) | 1.1 (`leading-tight`) | Space Grotesk | `font-heading text-4xl lg:text-7xl font-bold leading-tight` |
+| Heading (section H2) | heading | 30px (`text-3xl`) | 48px (`lg:text-5xl`) | 700 (`font-bold`) | 1.2 (`leading-tight`) | Space Grotesk | `font-heading text-3xl lg:text-5xl font-bold leading-tight` |
+| Subheading (H3) | heading (variant) | 24px (`text-2xl`) | 30px (`lg:text-3xl`) | 400 (`font-normal`) | 1.3 | Space Grotesk | `font-heading text-2xl lg:text-3xl font-normal` |
+| Body / Nav / CTA | base | 18px (`text-lg`) | 20px (`md:text-xl`) | 400 (`font-normal`) | 1.6 (`leading-relaxed`) | Inter | `font-body text-lg md:text-xl font-normal leading-relaxed` |
+| Body emphasis / CTA button | base (bold) | 18px (`text-lg`) | 20px (`md:text-xl`) | 700 (`font-bold`) | 1.6 (`leading-relaxed`) | Inter / Space Grotesk | `font-bold text-lg md:text-xl` |
+| Nav link | base | 16px (`text-base`) | 16px (`text-base`) | 400 (`font-normal`) | 1.0 | Inter | `font-body text-base font-normal` |
+| Small / legal | sm | 14px (`text-sm`) | 14px (`text-sm`) | 400 (`font-normal`) | 1.5 | Inter | `font-body text-sm font-normal` |
+
+**Size tokens summary:** `sm` (14px), `base` (16-20px), `heading` (30-48px), `display` (36-72px). Subheading is a variant of `heading` at the lower end of its range, differentiated by weight (400 vs 700).
 
 Additional typography rules:
 - `lang="de"` on `<html>` element -- required for correct hyphenation
@@ -188,7 +189,7 @@ All user-facing copy is in German. The voice is direct, provocative, informal "D
 | **Footer external links** | "V&S", "Neues Management Blog" | Links to v-und-s.de and neues-management.jimdofree.com |
 | **Cookie banner heading** | "Hinweis zu externen Diensten" |  |
 | **Cookie banner body** | "Diese Seite laedt Schriften von Google Fonts. Dabei wird Deine IP-Adresse an Google uebermittelt. Mehr dazu in unserer Datenschutzerklaerung." |  |
-| **Cookie banner dismiss** | "Verstanden" | Single dismiss button, no opt-in/out needed for essential CDN |
+| **Cookie banner dismiss** | "OK, verstanden" | Single dismiss button, no opt-in/out needed for essential CDN |
 
 ### Empty States
 
@@ -323,7 +324,7 @@ Color: Convert from Display P3 to sRGB
 
 | Viewport | Layout |
 |----------|--------|
-| Mobile (< 1024px) | Logo left, hamburger icon right. Menu slides in as full-screen overlay with dark background. |
+| Mobile (< 1024px) | Logo left, hamburger icon right. Hamburger button includes `<span class="sr-only">Menue oeffnen</span>` for screen readers. Menu slides in as full-screen overlay with dark background. |
 | Desktop (>= 1024px) | Logo left, anchor links center, CTA button right. Horizontal bar. |
 
 ### Pillar Cards Layout
@@ -374,18 +375,19 @@ All CTAs use `mailto:` links. No JavaScript forms, no backend.
 
 ### Mobile Menu
 
+- Hamburger button includes `<span class="sr-only">Menue oeffnen</span>` accessible label
 - Hamburger icon toggles full-screen overlay
 - Overlay background: `gp-black` at 98% opacity with `backdrop-blur-sm`
 - Menu items centered vertically, large tap targets (48px min height)
 - Close on link click (smooth scroll to section, overlay closes)
-- Close on outside click or dedicated close button (X icon, top-right)
+- Close on outside click or dedicated close button (X icon, top-right, with `<span class="sr-only">Menue schliessen</span>`)
 - Body scroll locked when menu is open (`overflow: hidden` on `<body>`)
 
 ### Cookie Banner
 
 - Fixed to bottom of viewport (`fixed bottom-0 inset-x-0`)
 - Background: `gp-charcoal` with slight border-top in `gp-slate`
-- Single "Verstanden" dismiss button
+- Single "OK, verstanden" dismiss button
 - Dismissal stored in `localStorage` key `gp-cookie-notice-dismissed`
 - If dismissed, banner does not show on subsequent visits
 - No opt-in/opt-out needed (Google Fonts is a functional external resource, not tracking)
@@ -405,6 +407,8 @@ All CTAs use `mailto:` links. No JavaScript forms, no backend.
 | Color contrast | All text/background combinations meet WCAG AA (see contrast table above) |
 | Semantic HTML | `<nav>`, `<main>`, `<section>`, `<footer>`, `<header>` landmarks |
 | Mobile nav | `aria-expanded` on hamburger button, `aria-hidden` on menu overlay, focus trap when open |
+| Hamburger sr-only | `<span class="sr-only">Menue oeffnen</span>` inside hamburger `<button>` |
+| Close button sr-only | `<span class="sr-only">Menue schliessen</span>` inside close `<button>` |
 
 ---
 
