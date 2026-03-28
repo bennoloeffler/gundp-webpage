@@ -12,7 +12,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **DESIGN-01**: Page uses bold typography system — Space Grotesk (headings) + Inter (body) with oversized display sizes
 - [x] **DESIGN-02**: Page uses dark, high-contrast color scheme that feels premium and anti-corporate
 - [ ] **DESIGN-03**: Sections reveal with scroll-triggered GSAP animations
-- [ ] **DESIGN-04**: Real photos from bilder-landshut-asis integrated as WebP/AVIF with JPEG fallback
+- [x] **DESIGN-04**: Real photos from bilder-landshut-asis integrated as WebP/AVIF with JPEG fallback
 - [x] **DESIGN-05**: Page is fully responsive mobile-first — works on phones, tablets, desktop
 - [x] **DESIGN-06**: German compound words render correctly with proper hyphenation (`hyphens: auto`, `lang="de"`)
 
@@ -20,21 +20,21 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **CONTENT-01**: Hero section with dramatic slogan "Dramatische Leistungssteigerung für produzierende Unternehmen" and primary CTA
 - [x] **CONTENT-02**: Problem agitation section — "Höchstleistungskiller" framing, why manufacturing companies need G&P
-- [ ] **CONTENT-03**: Three Themenschwerpunkte presented as bold visual blocks: ERP & KI, Orga/Mensch/Führung, Lean
-- [ ] **CONTENT-04**: Sch(B)rechstunde KI section — Freitags 16:00h, clear CTA to f.gloebl@g-und-p.de
-- [ ] **CONTENT-05**: Footer with links to v-und-s.de and neues-management.jimdofree.com
+- [x] **CONTENT-03**: Three Themenschwerpunkte presented as bold visual blocks: ERP & KI, Orga/Mensch/Führung, Lean
+- [x] **CONTENT-04**: Sch(B)rechstunde KI section — Freitags 16:00h, clear CTA to f.gloebl@g-und-p.de
+- [x] **CONTENT-05**: Footer with links to v-und-s.de and neues-management.jimdofree.com
 - [x] **CONTENT-06**: Navigation that works on mobile (hamburger) and desktop (sticky/fixed)
 
 ### Lead Generation
 
 - [x] **LEAD-01**: Primary CTA button in hero leading to contact/email
-- [ ] **LEAD-02**: Sch(B)rechstunde signup CTA with mailto:f.gloebl@g-und-p.de
-- [ ] **LEAD-03**: Multiple CTA touchpoints distributed throughout the page (not just hero)
+- [x] **LEAD-02**: Sch(B)rechstunde signup CTA with mailto:f.gloebl@g-und-p.de
+- [x] **LEAD-03**: Multiple CTA touchpoints distributed throughout the page (not just hero)
 
 ### Legal & Compliance
 
-- [ ] **LEGAL-01**: Impressum accessible via link to v-und-s.de Impressum page
-- [ ] **LEGAL-02**: Datenschutzerklärung accessible via link to v-und-s.de Datenschutz page
+- [x] **LEGAL-01**: Impressum accessible via link to v-und-s.de Impressum page
+- [x] **LEGAL-02**: Datenschutzerklärung accessible via link to v-und-s.de Datenschutz page
 - [ ] **LEGAL-03**: Cookie/CDN disclosure banner (DSGVO-compliant, covers Google Fonts + Tailwind CDN)
 
 ### Technical
@@ -83,20 +83,20 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DESIGN-01 | Phase 1 | Complete |
 | DESIGN-02 | Phase 1 | Complete |
 | DESIGN-03 | Phase 1 | Pending |
-| DESIGN-04 | Phase 1 | Pending |
+| DESIGN-04 | Phase 1 | Complete |
 | DESIGN-05 | Phase 1 | Complete |
 | DESIGN-06 | Phase 1 | Complete |
 | CONTENT-01 | Phase 1 | Complete |
 | CONTENT-02 | Phase 1 | Complete |
-| CONTENT-03 | Phase 1 | Pending |
-| CONTENT-04 | Phase 1 | Pending |
-| CONTENT-05 | Phase 1 | Pending |
+| CONTENT-03 | Phase 1 | Complete |
+| CONTENT-04 | Phase 1 | Complete |
+| CONTENT-05 | Phase 1 | Complete |
 | CONTENT-06 | Phase 1 | Complete |
 | LEAD-01 | Phase 1 | Complete |
-| LEAD-02 | Phase 1 | Pending |
-| LEAD-03 | Phase 1 | Pending |
-| LEGAL-01 | Phase 1 | Pending |
-| LEGAL-02 | Phase 1 | Pending |
+| LEAD-02 | Phase 1 | Complete |
+| LEAD-03 | Phase 1 | Complete |
+| LEGAL-01 | Phase 1 | Complete |
+| LEGAL-02 | Phase 1 | Complete |
 | LEGAL-03 | Phase 1 | Pending |
 | TECH-01 | Phase 1 | Pending |
 | TECH-02 | Phase 1 | Complete |

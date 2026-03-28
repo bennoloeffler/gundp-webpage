@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md -- Foundation: Tailwind theme, image conversion pipeline, build tooling
 - [x] 01-02-PLAN.md -- Page skeleton: HTML head, nav bar, hero section, problem agitation
-- [ ] 01-03-PLAN.md -- Content sections: pillars, credibility, Sch(B)rechstunde, CTA, footer, cookie banner
+- [x] 01-03-PLAN.md -- Content sections: pillars, credibility, Sch(B)rechstunde, CTA, footer, cookie banner
 - [ ] 01-04-PLAN.md -- Interactivity: GSAP scroll animations, mobile nav, cookie banner JS
 - [ ] 01-05-PLAN.md -- Production hardening: Tailwind CLI build, OG meta, performance validation
 
