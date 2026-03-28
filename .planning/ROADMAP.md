@@ -26,11 +26,15 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. A visitor can reach G&P via mailto CTAs distributed at multiple points throughout the page, including hero and Sch(B)rechstunde sections
   4. The page is legally compliant with Impressum link, Datenschutz link, and DSGVO cookie/CDN disclosure banner, and deploys correctly on GitHub Pages with Lighthouse mobile score >= 90
   5. German compound words render correctly with proper hyphenation, OG meta tags produce rich social previews when shared on LinkedIn, and the page loads in under 3 seconds on a 3G connection
-**Plans**: TBD
+**Plans**: 5 plans
 **UI hint**: yes
 
 Plans:
-- (TBD -- populated during phase planning)
+- [ ] 01-01-PLAN.md -- Foundation: Tailwind theme, image conversion pipeline, build tooling
+- [ ] 01-02-PLAN.md -- Page skeleton: HTML head, nav bar, hero section, problem agitation
+- [ ] 01-03-PLAN.md -- Content sections: pillars, credibility, Sch(B)rechstunde, CTA, footer, cookie banner
+- [ ] 01-04-PLAN.md -- Interactivity: GSAP scroll animations, mobile nav, cookie banner JS
+- [ ] 01-05-PLAN.md -- Production hardening: Tailwind CLI build, OG meta, performance validation
 
 ## Progress
 
@@ -39,4 +43,4 @@ Phases execute in numeric order.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Complete Landing Page | 0/? | Not started | - |
+| 1. Complete Landing Page | 0/5 | Not started | - |
