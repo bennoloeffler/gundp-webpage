@@ -63,3 +63,81 @@ mm.add("(prefers-reduced-motion: no-preference)", () => {
 
   return () => { /* GSAP auto-cleans up matchMedia contexts */ };
 });
+
+// ========================================
+// 2. STICKY NAV BACKGROUND TRANSITION
+// ========================================
+// Always active (not motion-dependent)
+const nav = document.querySelector("nav");
+if (nav) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+      nav.classList.add("bg-gp-dark/95", "backdrop-blur-sm");
+    } else {
+      nav.classList.remove("bg-gp-dark/95", "backdrop-blur-sm");
+    }
+  }, { passive: true });
+}
+
+// ========================================
+// 3. MOBILE MENU TOGGLE
+// ========================================
+const menuBtn = document.getElementById("menu-btn");
+const menuOverlay = document.getElementById("menu-overlay");
+const menuClose = document.getElementById("menu-close");
+
+function openMenu() {
+  if (!menuOverlay) return;
+  menuOverlay.classList.remove("hidden");
+  menuOverlay.setAttribute("aria-hidden", "false");
+  menuBtn?.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMenu() {
+  if (!menuOverlay) return;
+  menuOverlay.classList.add("hidden");
+  menuOverlay.setAttribute("aria-hidden", "true");
+  menuBtn?.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+}
+
+menuBtn?.addEventListener("click", openMenu);
+menuClose?.addEventListener("click", closeMenu);
+
+// Close menu when clicking a nav link (smooth scroll to section)
+menuOverlay?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", closeMenu);
+});
+
+// ========================================
+// 4. SMOOTH SCROLL FOR ANCHOR LINKS
+// ========================================
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href");
+    if (!href || href === "#") return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Close mobile menu if it was open
+      closeMenu();
+    }
+  });
+});
+
+// ========================================
+// 5. COOKIE BANNER (DSGVO)
+// ========================================
+const cookieBanner = document.getElementById("cookie-banner");
+const cookieDismiss = document.getElementById("cookie-dismiss");
+
+if (cookieBanner && !localStorage.getItem("gp-cookie-notice-dismissed")) {
+  cookieBanner.classList.remove("hidden");
+}
+
+cookieDismiss?.addEventListener("click", () => {
+  localStorage.setItem("gp-cookie-notice-dismissed", "true");
+  cookieBanner?.classList.add("hidden");
+});
