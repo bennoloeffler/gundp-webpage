@@ -11,7 +11,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **DESIGN-01**: Page uses bold typography system — Space Grotesk (headings) + Inter (body) with oversized display sizes
 - [x] **DESIGN-02**: Page uses dark, high-contrast color scheme that feels premium and anti-corporate
-- [ ] **DESIGN-03**: Sections reveal with scroll-triggered GSAP animations
+- [x] **DESIGN-03**: Sections reveal with scroll-triggered GSAP animations
 - [x] **DESIGN-04**: Real photos from bilder-landshut-asis integrated as WebP/AVIF with JPEG fallback
 - [x] **DESIGN-05**: Page is fully responsive mobile-first — works on phones, tablets, desktop
 - [x] **DESIGN-06**: German compound words render correctly with proper hyphenation (`hyphens: auto`, `lang="de"`)
@@ -35,7 +35,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **LEGAL-01**: Impressum accessible via link to v-und-s.de Impressum page
 - [x] **LEGAL-02**: Datenschutzerklärung accessible via link to v-und-s.de Datenschutz page
-- [ ] **LEGAL-03**: Cookie/CDN disclosure banner (DSGVO-compliant, covers Google Fonts + Tailwind CDN)
+- [x] **LEGAL-03**: Cookie/CDN disclosure banner (DSGVO-compliant, covers Google Fonts + Tailwind CDN)
 
 ### Technical
 
@@ -82,7 +82,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | DESIGN-01 | Phase 1 | Complete |
 | DESIGN-02 | Phase 1 | Complete |
-| DESIGN-03 | Phase 1 | Pending |
+| DESIGN-03 | Phase 1 | Complete |
 | DESIGN-04 | Phase 1 | Complete |
 | DESIGN-05 | Phase 1 | Complete |
 | DESIGN-06 | Phase 1 | Complete |
@@ -97,7 +97,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LEAD-03 | Phase 1 | Complete |
 | LEGAL-01 | Phase 1 | Complete |
 | LEGAL-02 | Phase 1 | Complete |
-| LEGAL-03 | Phase 1 | Pending |
+| LEGAL-03 | Phase 1 | Complete |
 | TECH-01 | Phase 1 | Pending |
 | TECH-02 | Phase 1 | Complete |
 | TECH-03 | Phase 1 | Pending |
