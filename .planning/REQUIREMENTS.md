@@ -13,21 +13,21 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **DESIGN-02**: Page uses dark, high-contrast color scheme that feels premium and anti-corporate
 - [ ] **DESIGN-03**: Sections reveal with scroll-triggered GSAP animations
 - [ ] **DESIGN-04**: Real photos from bilder-landshut-asis integrated as WebP/AVIF with JPEG fallback
-- [ ] **DESIGN-05**: Page is fully responsive mobile-first — works on phones, tablets, desktop
-- [ ] **DESIGN-06**: German compound words render correctly with proper hyphenation (`hyphens: auto`, `lang="de"`)
+- [x] **DESIGN-05**: Page is fully responsive mobile-first — works on phones, tablets, desktop
+- [x] **DESIGN-06**: German compound words render correctly with proper hyphenation (`hyphens: auto`, `lang="de"`)
 
 ### Content Sections
 
-- [ ] **CONTENT-01**: Hero section with dramatic slogan "Dramatische Leistungssteigerung für produzierende Unternehmen" and primary CTA
-- [ ] **CONTENT-02**: Problem agitation section — "Höchstleistungskiller" framing, why manufacturing companies need G&P
+- [x] **CONTENT-01**: Hero section with dramatic slogan "Dramatische Leistungssteigerung für produzierende Unternehmen" and primary CTA
+- [x] **CONTENT-02**: Problem agitation section — "Höchstleistungskiller" framing, why manufacturing companies need G&P
 - [ ] **CONTENT-03**: Three Themenschwerpunkte presented as bold visual blocks: ERP & KI, Orga/Mensch/Führung, Lean
 - [ ] **CONTENT-04**: Sch(B)rechstunde KI section — Freitags 16:00h, clear CTA to f.gloebl@g-und-p.de
 - [ ] **CONTENT-05**: Footer with links to v-und-s.de and neues-management.jimdofree.com
-- [ ] **CONTENT-06**: Navigation that works on mobile (hamburger) and desktop (sticky/fixed)
+- [x] **CONTENT-06**: Navigation that works on mobile (hamburger) and desktop (sticky/fixed)
 
 ### Lead Generation
 
-- [ ] **LEAD-01**: Primary CTA button in hero leading to contact/email
+- [x] **LEAD-01**: Primary CTA button in hero leading to contact/email
 - [ ] **LEAD-02**: Sch(B)rechstunde signup CTA with mailto:f.gloebl@g-und-p.de
 - [ ] **LEAD-03**: Multiple CTA touchpoints distributed throughout the page (not just hero)
 
@@ -40,7 +40,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Technical
 
 - [ ] **TECH-01**: Page deploys correctly on GitHub Pages (relative paths, no broken assets)
-- [ ] **TECH-02**: OG meta tags for rich previews when shared on LinkedIn/social media
+- [x] **TECH-02**: OG meta tags for rich previews when shared on LinkedIn/social media
 - [ ] **TECH-03**: Lighthouse performance score ≥ 90 on mobile
 - [ ] **TECH-04**: Page loads in under 3 seconds on 3G connection
 - [x] **TECH-05**: HEIC photos converted to WebP + JPEG fallback with EXIF/GPS data stripped
@@ -84,22 +84,22 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DESIGN-02 | Phase 1 | Complete |
 | DESIGN-03 | Phase 1 | Pending |
 | DESIGN-04 | Phase 1 | Pending |
-| DESIGN-05 | Phase 1 | Pending |
-| DESIGN-06 | Phase 1 | Pending |
-| CONTENT-01 | Phase 1 | Pending |
-| CONTENT-02 | Phase 1 | Pending |
+| DESIGN-05 | Phase 1 | Complete |
+| DESIGN-06 | Phase 1 | Complete |
+| CONTENT-01 | Phase 1 | Complete |
+| CONTENT-02 | Phase 1 | Complete |
 | CONTENT-03 | Phase 1 | Pending |
 | CONTENT-04 | Phase 1 | Pending |
 | CONTENT-05 | Phase 1 | Pending |
-| CONTENT-06 | Phase 1 | Pending |
-| LEAD-01 | Phase 1 | Pending |
+| CONTENT-06 | Phase 1 | Complete |
+| LEAD-01 | Phase 1 | Complete |
 | LEAD-02 | Phase 1 | Pending |
 | LEAD-03 | Phase 1 | Pending |
 | LEGAL-01 | Phase 1 | Pending |
 | LEGAL-02 | Phase 1 | Pending |
 | LEGAL-03 | Phase 1 | Pending |
 | TECH-01 | Phase 1 | Pending |
-| TECH-02 | Phase 1 | Pending |
+| TECH-02 | Phase 1 | Complete |
 | TECH-03 | Phase 1 | Pending |
 | TECH-04 | Phase 1 | Pending |
 | TECH-05 | Phase 1 | Complete |
