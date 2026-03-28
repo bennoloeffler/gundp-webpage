@@ -9,8 +9,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Visual Design
 
-- [ ] **DESIGN-01**: Page uses bold typography system — Space Grotesk (headings) + Inter (body) with oversized display sizes
-- [ ] **DESIGN-02**: Page uses dark, high-contrast color scheme that feels premium and anti-corporate
+- [x] **DESIGN-01**: Page uses bold typography system — Space Grotesk (headings) + Inter (body) with oversized display sizes
+- [x] **DESIGN-02**: Page uses dark, high-contrast color scheme that feels premium and anti-corporate
 - [ ] **DESIGN-03**: Sections reveal with scroll-triggered GSAP animations
 - [ ] **DESIGN-04**: Real photos from bilder-landshut-asis integrated as WebP/AVIF with JPEG fallback
 - [ ] **DESIGN-05**: Page is fully responsive mobile-first — works on phones, tablets, desktop
@@ -43,7 +43,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **TECH-02**: OG meta tags for rich previews when shared on LinkedIn/social media
 - [ ] **TECH-03**: Lighthouse performance score ≥ 90 on mobile
 - [ ] **TECH-04**: Page loads in under 3 seconds on 3G connection
-- [ ] **TECH-05**: HEIC photos converted to WebP + JPEG fallback with EXIF/GPS data stripped
+- [x] **TECH-05**: HEIC photos converted to WebP + JPEG fallback with EXIF/GPS data stripped
 
 ## v2 Requirements
 
@@ -80,8 +80,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DESIGN-01 | Phase 1 | Pending |
-| DESIGN-02 | Phase 1 | Pending |
+| DESIGN-01 | Phase 1 | Complete |
+| DESIGN-02 | Phase 1 | Complete |
 | DESIGN-03 | Phase 1 | Pending |
 | DESIGN-04 | Phase 1 | Pending |
 | DESIGN-05 | Phase 1 | Pending |
@@ -102,7 +102,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TECH-02 | Phase 1 | Pending |
 | TECH-03 | Phase 1 | Pending |
 | TECH-04 | Phase 1 | Pending |
-| TECH-05 | Phase 1 | Pending |
+| TECH-05 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 20 total
