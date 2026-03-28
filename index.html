@@ -7,62 +7,19 @@
   <meta name="description" content="G&amp;P - Dramatische Leistungssteigerung fuer produzierende Unternehmen. ERP &amp; KI, Lean, Organisation. Beratung fuer Geschaeftsfuehrer.">
 
   <!-- OG meta tags -->
-  <meta property="og:title" content="G&amp;P - Hoechstleistung fuer Ihre Produktion">
-  <meta property="og:description" content="Dramatische Leistungssteigerung fuer produzierende Unternehmen. ERP &amp; KI, Lean, Organisation.">
+  <meta property="og:title" content="G&amp;P - Dramatische Leistungssteigerung fuer produzierende Unternehmen">
+  <meta property="og:description" content="Beratung fuer produzierende Unternehmen. ERP &amp; KI, Lean, Organisation. Sch(B)rechstunde KI: Freitags 16:00 Uhr.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/og-image.jpg">
+  <meta property="og:locale" content="de_DE">
+
+  <!-- Production CSS (Tailwind CLI build) -->
+  <link href="css/output.css" rel="stylesheet">
 
   <!-- Font preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS v4 CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-  <!-- Tailwind theme (mirrors css/input.css) -->
-  <style type="text/tailwindcss">
-    @import "tailwindcss";
-
-    @theme {
-      --color-gp-black: #0a0a0a;
-      --color-gp-dark: #141414;
-      --color-gp-charcoal: #1a1a1a;
-      --color-gp-slate: #2a2a2a;
-      --color-gp-grey: #666666;
-      --color-gp-light: #e5e5e5;
-      --color-gp-white: #fafafa;
-      --color-gp-red: #c41e3a;
-      --color-gp-red-hover: #d6263f;
-      --color-gp-gold: #c5a55a;
-      --color-gp-gold-hover: #d4b76a;
-      --font-heading: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    @layer base {
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 5rem;
-      }
-      body {
-        font-family: var(--font-body);
-        background-color: var(--color-gp-black);
-        color: var(--color-gp-white);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      /* German hyphenation for body text -- prevents compound word overflow (DESIGN-06) */
-      p, li, dd {
-        hyphens: auto;
-        -webkit-hyphens: auto;
-      }
-      /* Balanced headings to prevent orphaned words */
-      h1, h2, h3 {
-        text-wrap: balance;
-      }
-    }
-  </style>
 
   <!-- GSAP for scroll animations -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" defer></script>
