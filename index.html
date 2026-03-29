@@ -47,6 +47,52 @@
     body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
     p, li, dd { hyphens: auto; }
     h1, h2, h3 { text-wrap: balance; }
+
+    /* Testimonial hover-reveal cards */
+    .testimonial-card {
+      position: relative;
+      border-left: 4px solid #c41e3a;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: default;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    @media (prefers-color-scheme: dark) {
+      .testimonial-card:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      }
+    }
+    .testimonial-card .quote-mark {
+      font-size: 4rem;
+      line-height: 1;
+      color: #c41e3a;
+      font-family: Georgia, serif;
+      position: absolute;
+      top: -0.25rem;
+      left: 0.75rem;
+      opacity: 0.25;
+      pointer-events: none;
+      user-select: none;
+    }
+    .testimonial-card .quote-full {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+    .testimonial-card:hover .quote-full {
+      max-height: 10rem;
+      opacity: 1;
+    }
+    .testimonial-card .quote-teaser {
+      transition: opacity 0.3s ease;
+    }
+    .testimonial-card:hover .quote-teaser {
+      opacity: 0.55;
+    }
+
     .flex-trio {
       display: flex;
       gap: 1.5rem;
@@ -158,49 +204,91 @@
           Was unsere Kunden sagen
         </h2>
         <div class="flex-trio">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-            <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic">
-              „Zuerst dachte ich, es wäre das typische Beratergelaber, aber da steckt deutlich mehr dahinter. Danke."
+          <!-- Card 1 -->
+          <div class="testimonial-card bg-white dark:bg-gray-800 rounded-lg p-6 pt-10">
+            <span class="quote-mark" aria-hidden="true">&#x201E;</span>
+            <p class="quote-teaser font-body text-sm leading-relaxed text-gray-900 dark:text-white font-medium">
+              „Typisches Beratergelaber? Da steckt mehr dahinter."
             </p>
-            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-3">Josef Reichinger</p>
-            <p class="font-body text-xs text-gray-500">Betriebsleiter, FASCHANG Werkzeugbau GmbH</p>
+            <div class="quote-full">
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic mt-2">
+                Zuerst dachte ich, es wäre das typische Beratergelaber, aber da steckt deutlich mehr dahinter. Danke.
+              </p>
+            </div>
+            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-4">Josef Reichinger</p>
+            <p class="font-body text-xs text-gray-500 dark:text-gray-400">Betriebsleiter, FASCHANG Werkzeugbau GmbH</p>
           </div>
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-            <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic">
-              „V&amp;S hat uns mit an Brutalität grenzender Offenheit den Spiegel vorgehalten. Danke dafür."
+          <!-- Card 2 -->
+          <div class="testimonial-card bg-white dark:bg-gray-800 rounded-lg p-6 pt-10">
+            <span class="quote-mark" aria-hidden="true">&#x201E;</span>
+            <p class="quote-teaser font-body text-sm leading-relaxed text-gray-900 dark:text-white font-medium">
+              „Brutalität grenzende Offenheit."
             </p>
-            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-3">Dr. Stefan Heun</p>
-            <p class="font-body text-xs text-gray-500">Geschäftsführer, Schleifring GmbH</p>
+            <div class="quote-full">
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic mt-2">
+                V&amp;S hat uns mit an Brutalität grenzender Offenheit den Spiegel vorgehalten. Danke dafür.
+              </p>
+            </div>
+            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-4">Dr. Stefan Heun</p>
+            <p class="font-body text-xs text-gray-500 dark:text-gray-400">Geschäftsführer, Schleifring GmbH</p>
           </div>
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-            <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic">
-              „Berater, die Maschinenbau und Familienunternehmen wirklich verstehen, sind selten. Funktionierende Termintreue, wie wir sie nie hatten."
+          <!-- Card 3 -->
+          <div class="testimonial-card bg-white dark:bg-gray-800 rounded-lg p-6 pt-10">
+            <span class="quote-mark" aria-hidden="true">&#x201E;</span>
+            <p class="quote-teaser font-body text-sm leading-relaxed text-gray-900 dark:text-white font-medium">
+              „Berater, die Maschinenbau verstehen? Selten."
             </p>
-            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-3">Jürgen Knoll</p>
-            <p class="font-body text-xs text-gray-500">Geschäftsführer, KNOLL Maschinenbau GmbH</p>
+            <div class="quote-full">
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic mt-2">
+                Berater, die Maschinenbau und Familienunternehmen wirklich verstehen, sind selten. Funktionierende Termintreue, wie wir sie nie hatten.
+              </p>
+            </div>
+            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-4">Jürgen Knoll</p>
+            <p class="font-body text-xs text-gray-500 dark:text-gray-400">Geschäftsführer, KNOLL Maschinenbau GmbH</p>
           </div>
         </div>
         <div class="flex-trio mt-4">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-            <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic">
-              „V&amp;S hat uns durch finstere Zeiten begleitet. Wir sind gestärkt aus der Krise hervorgegangen."
+          <!-- Card 4 -->
+          <div class="testimonial-card bg-white dark:bg-gray-800 rounded-lg p-6 pt-10">
+            <span class="quote-mark" aria-hidden="true">&#x201E;</span>
+            <p class="quote-teaser font-body text-sm leading-relaxed text-gray-900 dark:text-white font-medium">
+              „Gestärkt aus der Krise."
             </p>
-            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-3">Horst Leidner</p>
-            <p class="font-body text-xs text-gray-500">Geschäftsführer, mimatic GmbH</p>
+            <div class="quote-full">
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic mt-2">
+                V&amp;S hat uns durch finstere Zeiten begleitet. Wir sind gestärkt aus der Krise hervorgegangen.
+              </p>
+            </div>
+            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-4">Horst Leidner</p>
+            <p class="font-body text-xs text-gray-500 dark:text-gray-400">Geschäftsführer, mimatic GmbH</p>
           </div>
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-            <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic">
-              „Billig war er nicht. Aber dafür sehr gut. V&amp;S hat uns Wege aufgezeigt, Innovationen schneller auf den Markt zu bringen."
+          <!-- Card 5 -->
+          <div class="testimonial-card bg-white dark:bg-gray-800 rounded-lg p-6 pt-10">
+            <span class="quote-mark" aria-hidden="true">&#x201E;</span>
+            <p class="quote-teaser font-body text-sm leading-relaxed text-gray-900 dark:text-white font-medium">
+              „Billig war er nicht. Aber sehr gut."
             </p>
-            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-3">Martina Barton</p>
-            <p class="font-body text-xs text-gray-500">Geschäftsleitung, BBG GmbH &amp; Co. KG</p>
+            <div class="quote-full">
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic mt-2">
+                Billig war er nicht. Aber dafür sehr gut. V&amp;S hat uns Wege aufgezeigt, Innovationen schneller auf den Markt zu bringen.
+              </p>
+            </div>
+            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-4">Martina Barton</p>
+            <p class="font-body text-xs text-gray-500 dark:text-gray-400">Geschäftsleitung, BBG GmbH &amp; Co. KG</p>
           </div>
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
-            <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic">
-              „Alle Abteilungsleiter ziehen am selben Strang. Wir sind im Fluss. Planung und Führung fällt uns jetzt viel leichter."
+          <!-- Card 6 -->
+          <div class="testimonial-card bg-white dark:bg-gray-800 rounded-lg p-6 pt-10">
+            <span class="quote-mark" aria-hidden="true">&#x201E;</span>
+            <p class="quote-teaser font-body text-sm leading-relaxed text-gray-900 dark:text-white font-medium">
+              „Wir sind im Fluss."
             </p>
-            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-3">Geschäftsführer</p>
-            <p class="font-body text-xs text-gray-500">Mittelständischer Maschinenbauer</p>
+            <div class="quote-full">
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 italic mt-2">
+                Alle Abteilungsleiter ziehen am selben Strang. Wir sind im Fluss. Planung und Führung fällt uns jetzt viel leichter.
+              </p>
+            </div>
+            <p class="font-heading text-sm font-bold text-gray-900 dark:text-white mt-4">Geschäftsführer</p>
+            <p class="font-body text-xs text-gray-500 dark:text-gray-400">Mittelständischer Maschinenbauer</p>
           </div>
         </div>
       </div>
