@@ -24,29 +24,26 @@ mm.add("(prefers-reduced-motion: no-preference)", () => {
   });
 
   // --- Pillars section: fade up staggered left-to-right ---
+  document.querySelectorAll(".pillar-card").forEach(el => el.style.opacity = "1");
   gsap.from(".pillar-card", {
-    scrollTrigger: { trigger: "#pillars", start: "top 75%", toggleActions: "play none none none" },
-    y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: "power3.out"
+    scrollTrigger: { trigger: "#pillars", start: "top bottom", toggleActions: "play none none none" },
+    y: 30, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power2.out"
   });
 
-  // --- Credibility section: typographic accent fade in + scale ---
-  gsap.from("#proof .font-heading", {
-    scrollTrigger: { trigger: "#proof", start: "top 80%", toggleActions: "play none none none" },
-    opacity: 0, scale: 0.95, duration: 0.8, ease: "power2.out"
+  // --- Manifesto section: lines fade up staggered ---
+  gsap.from("#manifesto .manifesto-line", {
+    scrollTrigger: { trigger: "#manifesto", start: "top 75%", toggleActions: "play none none none" },
+    y: 25, opacity: 0, duration: 0.6, stagger: 0.12, ease: "power2.out"
   });
 
-  // --- Credibility metrics: count-up animation ---
-  document.querySelectorAll(".metric-number").forEach((el) => {
-    const target = parseInt(el.getAttribute("data-target"), 10);
-    if (isNaN(target)) return;
-    const counter = { val: 0 };
-    gsap.to(counter, {
-      val: target,
-      duration: 1.5,
-      ease: "power1.inOut",
-      scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none none" },
-      onUpdate: () => { el.textContent = Math.round(counter.val); }
-    });
+  // --- Haltung section: text block + team cards ---
+  gsap.from("#haltung h2, #haltung .max-w-3xl p", {
+    scrollTrigger: { trigger: "#haltung", start: "top 80%", toggleActions: "play none none none" },
+    x: -30, opacity: 0, duration: 0.7, stagger: 0.15, ease: "power2.out"
+  });
+  gsap.from("#haltung .team-card", {
+    scrollTrigger: { trigger: "#haltung", start: "top 75%", toggleActions: "play none none none" },
+    y: 30, opacity: 0, duration: 0.6, stagger: 0.15, ease: "power3.out"
   });
 
   // --- Sch(B)rechstunde section: fade up ---
@@ -72,9 +69,9 @@ const nav = document.querySelector("nav");
 if (nav) {
   window.addEventListener("scroll", () => {
     if (window.scrollY > 80) {
-      nav.classList.add("bg-gp-dark/95", "backdrop-blur-sm");
+      nav.classList.add("shadow-md");
     } else {
-      nav.classList.remove("bg-gp-dark/95", "backdrop-blur-sm");
+      nav.classList.remove("shadow-md");
     }
   }, { passive: true });
 }

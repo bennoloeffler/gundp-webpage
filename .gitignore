@@ -3,3 +3,9 @@ tailwindcss-macos-arm64
 
 # macOS
 .DS_Store
+
+# Reference screenshots (not for website)
+reference-*.png
+
+# Original HEIC source photos (not for web)
+bilder-landshut-asis/

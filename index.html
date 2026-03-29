@@ -3,237 +3,452 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>G&amp;P - Dramatische Leistungssteigerung fuer produzierende Unternehmen</title>
-  <meta name="description" content="G&amp;P - Dramatische Leistungssteigerung fuer produzierende Unternehmen. ERP &amp; KI, Lean, Organisation. Beratung fuer Geschaeftsfuehrer.">
+  <title>G&amp;P – Dramatische Leistungssteigerung für produzierende Unternehmen</title>
+  <meta name="description" content="G&amp;P Management Consultants – Ehrlich. Direkt. Wirksam. Beratung im Mittelstand.">
+  <meta name="color-scheme" content="light dark">
 
-  <!-- OG meta tags -->
-  <meta property="og:title" content="G&amp;P - Dramatische Leistungssteigerung fuer produzierende Unternehmen">
-  <meta property="og:description" content="Beratung fuer produzierende Unternehmen. ERP &amp; KI, Lean, Organisation. Sch(B)rechstunde KI: Freitags 16:00 Uhr.">
+  <meta property="og:title" content="G&amp;P – Dramatische Leistungssteigerung für produzierende Unternehmen">
+  <meta property="og:description" content="Ehrlich. Direkt. Wirksam. Sch(B)rechstunde KI: Freitags 16:00 Uhr.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/og-image.jpg">
   <meta property="og:locale" content="de_DE">
 
-  <!-- Production CSS (Tailwind CLI build) -->
-  <link href="css/output.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'media',
+      theme: {
+        extend: {
+          colors: {
+            gp: {
+              red: '#c41e3a',
+              'red-hover': '#d6263f',
+              gold: '#c5a55a',
+            }
+          },
+          fontFamily: {
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            body: ['"Inter"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Font preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 
-  <!-- GSAP for scroll animations -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js" defer></script>
-</head>
-<body>
 
-  <!-- Skip link (accessibility) -->
-  <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-gp-red focus:text-gp-white focus:px-4 focus:py-2 focus:rounded focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    p, li, dd { hyphens: auto; }
+    h1, h2, h3 { text-wrap: balance; }
+    .flex-trio {
+      display: flex;
+      gap: 1.5rem;
+      width: 100%;
+      box-sizing: border-box;
+      align-items: stretch;
+    }
+    .flex-trio > * {
+      width: calc(33.333% - 1rem);
+      flex-shrink: 0;
+      min-width: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+      height: auto !important;
+      align-self: stretch !important;
+    }
+    .flex-quad {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      width: 100%;
+      box-sizing: border-box;
+      align-items: stretch;
+    }
+    .flex-quad > * {
+      width: calc(50% - 0.75rem);
+      flex-shrink: 0;
+      min-width: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+      height: auto !important;
+      align-self: stretch !important;
+    }
+    @media (max-width: 768px) {
+      .flex-trio { flex-direction: column; }
+      .flex-trio > * { width: 100%; }
+      .flex-quad { flex-direction: column; }
+      .flex-quad > * { width: 100%; }
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+
+  <!-- Skip link -->
+  <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-gp-red focus:text-white focus:px-4 focus:py-2 focus:rounded">
     Zum Inhalt springen
   </a>
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 inset-x-0 z-40 transition-colors duration-300" aria-label="Hauptnavigation">
+  <!-- NAV -->
+  <nav class="fixed top-0 inset-x-0 z-40 bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm shadow-sm transition-colors duration-300" aria-label="Hauptnavigation">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between h-20">
-      <!-- Logo/brand (text-based) -->
-      <a href="#" class="font-heading text-2xl font-bold text-gp-white tracking-tight focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">G&amp;P</a>
-
-      <!-- Desktop nav links (hidden on mobile) -->
+      <a href="#" class="flex items-center">
+        <img src="assets/images/gup-logo-transparent.png" alt="G&amp;P – Ehrlich. Direkt. Wirksam." class="h-12 w-auto dark:brightness-150">
+      </a>
       <div class="hidden lg:flex items-center gap-8">
-        <a href="#pillars" class="font-body text-base text-gp-white/70 hover:text-gp-white transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">Schwerpunkte</a>
-        <a href="#scb" class="font-body text-base text-gp-white/70 hover:text-gp-white transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">Sch(B)rechstunde</a>
-        <a href="#cta" class="font-body text-base text-gp-white/70 hover:text-gp-white transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">Kontakt</a>
-        <a href="mailto:f.gloebl@g-und-p.de" class="inline-block bg-gp-red hover:bg-gp-red-hover text-gp-white font-bold text-base px-6 py-2.5 rounded transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">
-          Kontakt
-        </a>
+        <a href="#pillars" class="font-body text-base text-gray-600 dark:text-gray-400 hover:text-gp-red dark:hover:text-gp-red transition-colors">Schwerpunkte</a>
+        <a href="#haltung" class="font-body text-base text-gray-600 dark:text-gray-400 hover:text-gp-red dark:hover:text-gp-red transition-colors">Haltung</a>
+        <a href="#scb" class="font-body text-base text-gray-600 dark:text-gray-400 hover:text-gp-red dark:hover:text-gp-red transition-colors">Sch(B)rechstunde</a>
+        <a href="mailto:f.gloebl@g-und-p.de" class="bg-gp-red hover:bg-gp-red-hover text-white font-bold text-base px-6 py-2.5 rounded transition-colors">Kontakt</a>
       </div>
-
-      <!-- Mobile hamburger button -->
-      <button id="menu-btn" class="lg:hidden text-gp-white focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black" aria-expanded="false" aria-controls="menu-overlay">
-        <span class="sr-only">Menue oeffnen</span>
-        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
+      <button id="menu-btn" class="lg:hidden text-gray-700 dark:text-gray-300" aria-expanded="false" aria-controls="menu-overlay">
+        <span class="sr-only">Menü öffnen</span>
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
       </button>
     </div>
-
-    <!-- Mobile menu overlay -->
-    <div id="menu-overlay" class="hidden fixed inset-0 z-50 bg-gp-black/98 backdrop-blur-sm flex flex-col items-center justify-center gap-8" aria-hidden="true">
-      <button id="menu-close" class="absolute top-6 right-6 text-gp-white focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">
-        <span class="sr-only">Menue schliessen</span>
-        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+    <div id="menu-overlay" class="hidden fixed inset-0 z-50 bg-white dark:bg-gray-950 flex flex-col items-center justify-center gap-8" aria-hidden="true">
+      <button id="menu-close" class="absolute top-6 right-6 text-gray-700 dark:text-gray-300">
+        <span class="sr-only">Menü schließen</span>
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
-      <a href="#pillars" class="font-heading text-2xl text-gp-white focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">Schwerpunkte</a>
-      <a href="#scb" class="font-heading text-2xl text-gp-white focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">Sch(B)rechstunde</a>
-      <a href="#cta" class="font-heading text-2xl text-gp-white focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">Kontakt</a>
-      <a href="mailto:f.gloebl@g-und-p.de" class="mt-4 inline-block bg-gp-red hover:bg-gp-red-hover text-gp-white font-bold text-lg px-8 py-3 rounded transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">
-        Jetzt Kontakt aufnehmen
-      </a>
+      <a href="#pillars" class="font-heading text-2xl text-gray-900 dark:text-white hover:text-gp-red">Schwerpunkte</a>
+      <a href="#haltung" class="font-heading text-2xl text-gray-900 dark:text-white hover:text-gp-red">Haltung</a>
+      <a href="#scb" class="font-heading text-2xl text-gray-900 dark:text-white hover:text-gp-red">Sch(B)rechstunde</a>
+      <a href="mailto:f.gloebl@g-und-p.de" class="mt-4 bg-gp-red hover:bg-gp-red-hover text-white font-bold text-lg px-8 py-3 rounded">Jetzt Kontakt aufnehmen</a>
     </div>
   </nav>
 
-  <!-- Main content -->
   <main>
 
-    <!-- Hero section: purely typographic, bold Space Grotesk on dark gradient -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <!-- Background: dark gradient with subtle radial accent -->
-      <div class="absolute inset-0 bg-gradient-to-b from-gp-black via-gp-dark to-gp-black"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(196,30,58,0.08)_0%,_transparent_60%)]"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(197,165,90,0.05)_0%,_transparent_50%)]"></div>
+    <!-- HERO – per README: "Beratung im Mittelstand" -->
+    <section id="hero" class="relative min-h-screen flex items-center pt-20">
+      <!-- Red top accent line -->
+      <div class="absolute top-20 left-0 right-0 h-1 bg-gp-red"></div>
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-24 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Left: text -->
+          <div>
+            <p class="font-heading text-lg md:text-xl font-bold text-gp-red uppercase tracking-wider">Beratung im Mittelstand</p>
+            <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white mt-4">
+              Dramatische <span class="text-gp-red">Leistungs&shy;steigerung</span> für produzierende Unternehmen
+            </h1>
+            <p class="subheadline mt-6 font-body text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-gray-400">
+              Kille die Höchstleistungskiller in Deiner Firma.
+            </p>
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a href="mailto:f.gloebl@g-und-p.de"
+                 class="cta-btn inline-block bg-gp-red hover:bg-gp-red-hover text-white font-bold text-lg px-8 py-4 rounded transition-all duration-200 hover:scale-[1.02]">
+                Klarheitsgespräch vereinbaren
+              </a>
+            </div>
+          </div>
+          <!-- Right: Florian photo + workshop photo -->
+          <div class="flex flex-col items-center gap-6">
+            <img src="assets/images/gup/image-22.png" alt="Florian Glöbl" class="w-64 h-64 object-cover rounded-full">
+            <img src="assets/images/gup/image-03.png" alt="Transformation Workshop" class="w-full max-w-sm rounded-lg shadow-lg">
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Hero content -->
-      <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <h1 class="font-heading text-4xl lg:text-7xl font-bold leading-tight tracking-tight text-gp-white">
-          Dramatische <span class="text-gp-red">Leistungssteigerung</span> fuer produzierende Unternehmen
-        </h1>
-        <p class="subheadline mt-6 font-body text-lg md:text-xl leading-relaxed text-gp-light max-w-3xl mx-auto">
-          Kille die Hoechstleistungskiller in Deiner Firma
-        </p>
-        <div class="mt-10">
-          <a href="mailto:f.gloebl@g-und-p.de"
-             class="cta-btn inline-block bg-gp-red hover:bg-gp-red-hover text-gp-white font-bold text-lg md:text-xl px-8 py-4 rounded transition-all duration-200 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">
-            Jetzt Kontakt aufnehmen
+    <!-- MANIFESTO -->
+    <section id="manifesto" class="bg-gray-50 dark:bg-gray-900 py-16 md:py-24 border-t border-gray-200 dark:border-gray-800">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
+              <span class="text-gp-red">Ehrlich.</span> Direkt. Wirksam.
+            </h2>
+            <div class="mt-8 space-y-4">
+              <p class="manifesto-line font-body text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
+                Wettbewerbsfähigkeit braucht keine Kosmetik&nbsp;– sondern Wirkung.
+              </p>
+              <p class="manifesto-line font-body text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
+                Kostendenken alleine wird es aber nicht richten:
+              </p>
+              <p class="manifesto-line font-body text-xl md:text-2xl leading-relaxed text-gray-900 dark:text-white font-bold">
+                Fokus auf herausragende Wertschöpfung&nbsp;– das schon eher.
+              </p>
+              <p class="manifesto-line font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gp-red mt-6">
+                30% besser.
+              </p>
+              <p class="manifesto-line font-body text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
+                Darum geht's. Durchbruch statt Schnickschnack.
+              </p>
+              <p class="manifesto-line font-body text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 mt-2">
+                Dafür stehen wir. Das tun wir. Mit Kunden, die wirklich etwas bewegen wollen.
+              </p>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <img src="assets/images/icons/wertschoepfung.png" alt="Wertschöpfung statt Methodik" class="max-w-full h-auto dark:brightness-90">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINZIPIEN – drei knackige Sätze -->
+    <section class="bg-white dark:bg-gray-950 py-16 md:py-24 border-t border-gray-200 dark:border-gray-800">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="space-y-8 max-w-4xl">
+          <div class="flex items-start gap-4">
+            <span class="font-heading text-4xl md:text-5xl font-bold text-gp-red leading-none shrink-0">1</span>
+            <p class="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+              Schnelle Erprobung <span class="text-gray-400 dark:text-gray-600 line-through decoration-2">statt sauteure Konzepte</span>
+            </p>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="font-heading text-4xl md:text-5xl font-bold text-gp-red leading-none shrink-0">2</span>
+            <p class="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+              Echte Probleme lösen <span class="text-gray-400 dark:text-gray-600 line-through decoration-2">statt Methodik bis der Arzt kommt</span>
+            </p>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="font-heading text-4xl md:text-5xl font-bold text-gp-red leading-none shrink-0">3</span>
+            <p class="font-heading text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+              Mehr Wirkung <span class="text-gray-400 dark:text-gray-600 line-through decoration-2">statt mehr Manntage</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THREE PILLARS -->
+    <section id="pillars" class="bg-gray-50 dark:bg-gray-900 py-16 md:py-24 border-t border-gray-200 dark:border-gray-800">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-gray-900 dark:text-white mb-12 lg:mb-16">
+          Drei Hebel für Höchstleistung
+        </h2>
+        <div class="flex-trio">
+          <!-- Pillar 1: Organisation, Führung & Mensch -->
+          <div class="pillar-card bg-white dark:bg-gray-800 rounded-lg p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gp-red">
+            <img src="assets/images/icons/image-13.png" alt="" class="w-16 h-16 object-contain mb-4">
+            <span class="text-gp-red font-heading text-3xl font-bold">01</span>
+            <h3 class="font-heading text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mt-2">Organisation, Führung &amp; Mensch</h3>
+            <p class="font-body text-base leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+              Einen Rahmen schaffen für Höchstleistungs-Entfaltung. Organisationen erzeugen Verhalten&nbsp;– nicht umgekehrt. Wir arbeiten am System, nicht am Individuum.
+            </p>
+            <p class="font-body text-sm italic text-gp-red mt-4">Führung als Gestaltungs-Kompetenz.</p>
+            <a href="organisation-fuehrung-mensch.html" class="inline-block font-body text-sm font-bold text-gp-red hover:text-gp-red-hover mt-4 transition-colors">Mehr erfahren &rarr;</a>
+          </div>
+          <!-- Pillar 2: Lean -->
+          <div class="pillar-card bg-white dark:bg-gray-800 rounded-lg p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gp-red">
+            <img src="assets/images/icons/image-09.png" alt="" class="w-16 h-16 object-contain mb-4">
+            <span class="text-gp-red font-heading text-3xl font-bold">02</span>
+            <h3 class="font-heading text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mt-2">Lean</h3>
+            <p class="font-body text-base leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+              Ohne saugute Wertschöpfung ist alles andere nichts. Lean als gelebte Praxis&nbsp;– Fluss, Engpässe lösen, Verschwendung eliminieren.
+            </p>
+            <p class="font-body text-sm italic text-gp-red mt-4">Lean ohne Methodik&nbsp;– aber mit konkreter Wirkung.</p>
+            <a href="lean.html" class="inline-block font-body text-sm font-bold text-gp-red hover:text-gp-red-hover mt-4 transition-colors">Mehr erfahren &rarr;</a>
+          </div>
+          <!-- Pillar 3: ERP & KI -->
+          <div class="pillar-card bg-white dark:bg-gray-800 rounded-lg p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gp-red">
+            <img src="assets/images/icons/image-12.png" alt="" class="w-16 h-16 object-contain mb-4">
+            <span class="text-gp-red font-heading text-3xl font-bold">03</span>
+            <h3 class="font-heading text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mt-2">ERP &amp; KI</h3>
+            <p class="font-body text-base leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+              Höchstleistungs-Killer vermeiden. Dein ERP muss arbeiten, nicht verwaltet werden. KI bringt nur dann etwas, wenn die Prozesse stimmen.
+            </p>
+            <p class="font-body text-sm italic text-gp-red mt-4">ERP als Leistungs-Bremse&nbsp;– oder Rückenwind?</p>
+            <a href="erp-ki.html" class="inline-block font-body text-sm font-bold text-gp-red hover:text-gp-red-hover mt-4 transition-colors">Mehr erfahren &rarr;</a>
+          </div>
+        </div>
+        <div class="mt-12 text-center">
+          <a href="mailto:f.gloebl@g-und-p.de" class="font-heading text-lg text-gp-red hover:text-gp-red-hover transition-colors font-bold">
+            Sprich mit Florian &rarr;
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Problem agitation section -->
-    <section id="problem" class="bg-gp-charcoal py-12 md:py-16 lg:py-24">
+    <!-- PROBLEM AGITATION – dark contrast section -->
+    <section id="problem" class="bg-gray-900 dark:bg-black py-16 md:py-24">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-gp-white mb-12">
+        <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-white mb-12">
           Warum die meisten Fabriken unter ihrem Potenzial bleiben
         </h2>
         <div class="space-y-8 max-w-prose">
-          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gp-light">
-            Deine ERP-Einfuehrung hat Millionen gekostet -- und trotzdem plant Dein Team in Excel. KI-Projekte versanden, weil niemand die Prozesse versteht, die sie optimieren sollen.
+          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gray-300">
+            Dein ERP hat Millionen gekostet&nbsp;– und trotzdem plant Dein Team in Excel. KI-Projekte versanden, weil niemand die Prozesse versteht, die sie optimieren sollen.
           </p>
-          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gp-light">
-            Fuehrungskraefte reden ueber Veraenderung, aber die Organisation wehrt sich mit jeder Faser. Hoechstleistung bleibt ein Vorsatz, kein Zustand.
+          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gray-300">
+            Führungskräfte reden über Veränderung, aber die Organisation wehrt sich mit jeder Faser. Höchstleistung bleibt ein Vorsatz, kein Zustand.
           </p>
-          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gp-light">
-            Lean war mal ein Projekt. Jetzt stauben die Boards ein. Wertschoepfung passiert trotz des Systems, nicht wegen ihm.
+          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gray-300">
+            Lean war mal ein Projekt. Jetzt stauben die Boards ein. Wertschöpfung passiert trotz des Systems, nicht wegen ihm.
           </p>
         </div>
-        <!-- Rhythm CTA per LEAD-03 -->
-        <div class="mt-12">
-          <a href="mailto:f.gloebl@g-und-p.de"
-             class="inline-block font-heading text-lg text-gp-red hover:text-gp-red-hover transition-colors duration-200 font-bold focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-charcoal">
-            Sprich mit Frank &rarr;
-          </a>
-        </div>
+        <p class="font-heading text-xl md:text-2xl font-bold text-gp-gold mt-12">
+          Höchstleistung als Unterlassungs-Leistung.
+        </p>
       </div>
     </section>
 
-    <!-- Pillars section: three Themenschwerpunkte as bold card blocks -->
-    <section id="pillars" class="bg-gp-black py-12 md:py-16 lg:py-24">
+    <!-- HALTUNG + TEAM -->
+    <section id="haltung" class="bg-white dark:bg-gray-950 py-16 md:py-24 border-t border-gray-200 dark:border-gray-800">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-gp-white mb-12 lg:mb-16">
-          Drei Hebel fuer Hoechstleistung
-        </h2>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
-          <!-- Pillar 1: ERP & KI -->
-          <div class="pillar-card bg-gp-charcoal rounded-lg p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gp-black/50">
-            <span class="text-gp-gold font-heading text-4xl font-bold">01</span>
-            <h3 class="font-heading text-2xl lg:text-3xl font-bold text-gp-white mt-4">ERP &amp; KI</h3>
-            <p class="font-body text-lg leading-relaxed text-gp-light mt-4">
-              Hoechstleistungs-Killer vermeiden. Dein ERP muss arbeiten, nicht verwaltet werden. KI bringt nur dann etwas, wenn die Prozesse stimmen.
-            </p>
-          </div>
-          <!-- Pillar 2: Orga, Mensch & Fuehrung -->
-          <div class="pillar-card bg-gp-charcoal rounded-lg p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gp-black/50">
-            <span class="text-gp-gold font-heading text-4xl font-bold">02</span>
-            <h3 class="font-heading text-2xl lg:text-3xl font-bold text-gp-white mt-4">Orga, Mensch &amp; Fuehrung</h3>
-            <p class="font-body text-lg leading-relaxed text-gp-light mt-4">
-              Rahmen fuer Hoechstleistungs-Entfaltung. Strukturen, die Menschen befaehigen statt behindern.
-            </p>
-          </div>
-          <!-- Pillar 3: Lean -->
-          <div class="pillar-card bg-gp-charcoal rounded-lg p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gp-black/50">
-            <span class="text-gp-gold font-heading text-4xl font-bold">03</span>
-            <h3 class="font-heading text-2xl lg:text-3xl font-bold text-gp-white mt-4">Lean</h3>
-            <p class="font-body text-lg leading-relaxed text-gp-light mt-4">
-              Ohne saugute Wertschoepfung ist alles andere nichts. Lean als gelebte Praxis, nicht als eingestaubtes Projekt.
-            </p>
-          </div>
+        <div class="max-w-3xl mb-16">
+          <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
+            Unsere Haltung
+          </h2>
+          <p class="font-body text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 mt-6">
+            Wir glauben nicht, dass es an den Menschen liegt. Sondern an dem, was sie umgibt: Hierarchien, Strukturen, Rollen, die Art wie Entscheidungen getroffen werden.
+          </p>
+          <p class="font-heading text-xl md:text-2xl font-bold text-gp-red mt-6">
+            Organisationen erzeugen Verhalten&nbsp;– nicht umgekehrt.
+          </p>
+          <p class="font-body text-lg leading-relaxed text-gray-600 dark:text-gray-400 mt-4">
+            Deshalb arbeiten wir am System, nicht am Individuum. Dort, wo Wirkung möglich wird&nbsp;– oder verhindert wird.
+          </p>
         </div>
-        <!-- Rhythm CTA per LEAD-03 -->
-        <div class="mt-12 text-center">
-          <a href="mailto:f.gloebl@g-und-p.de"
-             class="inline-block font-heading text-lg text-gp-red hover:text-gp-red-hover transition-colors duration-200 font-bold focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">
-            Sprich mit Frank &rarr;
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Credibility/proof section: purely typographic, no photos -->
-    <section id="proof" class="bg-gp-charcoal py-12 md:py-16 lg:py-24">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <!-- Typographic accent block (replaces photo) -->
-          <div class="flex flex-col items-start justify-center">
-            <span class="font-heading text-8xl lg:text-[10rem] font-bold leading-none text-gp-gold/20">G&amp;P</span>
-            <div class="mt-4 w-24 h-1 bg-gp-gold"></div>
+        <div class="flex-quad">
+          <div class="team-card bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+            <div class="flex justify-center pt-6"><img src="assets/images/gup/image-22.png" alt="Florian Glöbl" class="w-48 h-48 object-cover rounded-full"></div>
+            <div class="p-6">
+              <p class="font-heading text-xl font-bold text-gray-900 dark:text-white">Florian Glöbl</p>
+              <p class="font-body text-sm text-gp-red font-bold mt-1">Geschäftsführer, Berater &amp; Vernetzer</p>
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+                Über 15 Jahre im mittelständischen Sondermaschinenbau. Wertschöpfung verstehen, Orientierung geben, Bewegung ermöglichen.
+              </p>
+            </div>
           </div>
-          <!-- Text + metrics -->
-          <div>
-            <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-gp-white">
-              Frank Gloebl
-            </h2>
-            <p class="font-body text-lg md:text-xl leading-relaxed text-gp-light mt-4 max-w-prose">
-              Seit ueber 20 Jahren helfe ich produzierenden Unternehmen, ihre Hoechstleistung zu erreichen. Nicht mit PowerPoint-Beratung, sondern mit Klartext und Umsetzung.
-            </p>
-            <!-- Metrics with count-up targets (GSAP animates in plan 04) -->
-            <div class="grid grid-cols-2 gap-6 mt-8">
-              <div>
-                <span class="metric-number text-gp-gold font-heading text-4xl lg:text-5xl font-bold" data-target="30">30</span><span class="text-gp-gold font-heading text-4xl lg:text-5xl font-bold">%</span>
-                <p class="font-body text-sm text-gp-grey mt-1">Leistungssteigerung im Schnitt</p>
-              </div>
-              <div>
-                <span class="metric-number text-gp-gold font-heading text-4xl lg:text-5xl font-bold" data-target="150">150</span><span class="text-gp-gold font-heading text-4xl lg:text-5xl font-bold">+</span>
-                <p class="font-body text-sm text-gp-grey mt-1">Projekte in der Produktion</p>
-              </div>
+          <div class="team-card bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+            <div class="flex justify-center pt-6"><img src="assets/images/gup/image-21.png" alt="Benno Löffler" class="w-48 h-48 object-cover rounded-full"></div>
+            <div class="p-6">
+              <p class="font-heading text-xl font-bold text-gray-900 dark:text-white">Benno Löffler</p>
+              <p class="font-body text-sm text-gp-red font-bold mt-1">Gesellschafter &amp; Systempraktiker</p>
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+                Über 25 Jahre Beratung. Autor von „Saugute Zusammenarbeit". Sieht Strukturen, wo andere Verhalten erklären.
+              </p>
+            </div>
+          </div>
+          <div class="team-card bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+            <div class="flex justify-center pt-6"><img src="assets/images/heigl/img-00.jpg" alt="Simone Heigl" class="w-48 h-48 object-cover rounded-full"></div>
+            <div class="p-6">
+              <p class="font-heading text-xl font-bold text-gray-900 dark:text-white">Simone Heigl</p>
+              <p class="font-body text-sm text-gp-red font-bold mt-1">Trainerin, Beraterin &amp; Coach für Kommunikation und Führung</p>
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+                Kommunikation als mächtigste Lebenskompetenz. Resilienz, Klartext, Konfliktmanagement&nbsp;– authentisch und individuell.
+              </p>
+            </div>
+          </div>
+          <div class="team-card bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+            <div class="flex justify-center pt-6"><img src="assets/images/weundd/img-05.jpg" alt="David Weber" class="w-48 h-48 object-cover rounded-full"></div>
+            <div class="p-6">
+              <p class="font-heading text-xl font-bold text-gray-900 dark:text-white">David Weber</p>
+              <p class="font-body text-sm text-gp-red font-bold mt-1">Lean-Berater &amp; Wertschöpfungsexperte</p>
+              <p class="font-body text-sm leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+                Lean als gelebte Praxis. Fluss erzeugen, Engpässe lösen, Verschwendung eliminieren&nbsp;– direkt in der Wertschöpfung.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Sch(B)rechstunde KI section -->
-    <section id="scb" class="bg-gp-dark py-12 md:py-16 lg:py-24 border-l-4 border-gp-gold">
+    <!-- VERANSTALTUNGEN -->
+    <section id="scb" class="bg-gray-50 dark:bg-gray-900 py-16 md:py-24 border-t border-gray-200 dark:border-gray-800">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-gp-white">
-          Sch(B)rechstunde KI
+        <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-gray-900 dark:text-white mb-12 lg:mb-16">
+          Veranstaltungen
         </h2>
-        <p class="font-body text-lg md:text-xl leading-relaxed text-gp-light mt-6 max-w-prose">
-          Jeden Freitag, 16:00 Uhr. Deine Fragen zu KI in der Produktion -- direkt, ungeschminkt, kostenlos.
-        </p>
-        <div class="mt-10">
-          <a href="mailto:f.gloebl@g-und-p.de?subject=Anmeldung%20Sch(B)rechstunde%20KI"
-             class="inline-block bg-gp-red hover:bg-gp-red-hover text-gp-white font-bold text-lg md:text-xl px-8 py-4 rounded transition-all duration-200 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-dark">
-            Zur Sch(B)rechstunde anmelden
-          </a>
+        <div class="flex-trio">
+          <!-- Sch(B)rechstunde -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 border-t-4 border-t-gp-red">
+            <p class="font-body text-sm text-gp-red font-bold uppercase tracking-wider">Jeden Freitag, 16:00–17:00</p>
+            <h3 class="font-heading text-2xl font-bold text-gray-900 dark:text-white mt-3">Sch(B)rechstunde</h3>
+            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white mt-2">Aufbrechen oder Abkotzen?</p>
+            <p class="font-body text-base leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+              Offener Austausch zu Höchstleistungskillern, ERP und KI. Direkt, ungeschminkt, kostenlos. Keine Agenda, keine Slides&nbsp;– nur echte Fragen und ehrliche Antworten.
+            </p>
+            <div class="mt-6">
+              <a href="mailto:f.gloebl@g-und-p.de?subject=Anmeldung%20Sch(B)rechstunde"
+                 class="inline-block bg-gp-red hover:bg-gp-red-hover text-white font-bold text-base px-6 py-3 rounded transition-colors">
+                Anmelden
+              </a>
+            </div>
+          </div>
+          <!-- Leistung am Limit -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 border-t-4 border-t-gp-red">
+            <p class="font-body text-sm text-gp-red font-bold uppercase tracking-wider">3-Tages-Event in den Bergen</p>
+            <h3 class="font-heading text-2xl font-bold text-gray-900 dark:text-white mt-3">Leistung am Limit</h3>
+            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white mt-2">Führung radikal neu denken.</p>
+            <p class="font-body text-base leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+              Transformation, Höchstleistung und Resilienz für Führungskräfte. Mit Extrembergsteigern, Impulsen und echten Fällen aus der Praxis.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="leistung-am-limit.html"
+                 class="inline-block bg-gp-red hover:bg-gp-red-hover text-white font-bold text-base px-6 py-3 rounded transition-colors">
+                Mehr erfahren
+              </a>
+              <a href="https://www.leistung-am-limit.de/" target="_blank" rel="noopener noreferrer"
+                 class="inline-block border-2 border-gp-red text-gp-red hover:bg-gp-red hover:text-white font-bold text-base px-6 py-3 rounded transition-colors">
+                Zur Buchung
+              </a>
+            </div>
+          </div>
+          <!-- SystemGestalter -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 lg:p-8 border-2 border-gray-200 dark:border-gray-700 border-t-4 border-t-gp-red">
+            <p class="font-body text-sm text-gp-red font-bold uppercase tracking-wider">Ausbildung in 3 Blöcken</p>
+            <h3 class="font-heading text-2xl font-bold text-gray-900 dark:text-white mt-3">SystemGestalter</h3>
+            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white mt-2">Wirksame Transformation lernen.</p>
+            <p class="font-body text-base leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+              Lean, Agile, TOC und Systemtheorie&nbsp;– praxisnah kombiniert. Für HR, OE, Berater und Führungskräfte, die systemischer denken wollen.
+            </p>
+            <div class="mt-6">
+              <a href="systemgestalter.html"
+                 class="inline-block bg-gp-red hover:bg-gp-red-hover text-white font-bold text-base px-6 py-3 rounded transition-colors">
+                Mehr erfahren
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Final CTA section -->
-    <section id="cta" class="bg-gp-black py-12 md:py-16 lg:py-24">
+    <!-- TEASER SLOGANS from README -->
+    <section class="bg-white dark:bg-gray-950 py-12 md:py-16 border-t border-gray-200 dark:border-gray-800">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="flex-trio text-center">
+          <div class="p-6">
+            <img src="assets/images/icons/image-13.png" alt="" class="w-12 h-12 object-contain mx-auto mb-3">
+            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Was macht HR NICHT?</p>
+            <p class="font-body text-sm text-gray-500 dark:text-gray-500 mt-1">Übergriffigkeit als Tabu.</p>
+          </div>
+          <div class="p-6">
+            <img src="assets/images/icons/image-10.png" alt="" class="w-12 h-12 object-contain mx-auto mb-3">
+            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Höchstleistung</p>
+            <p class="font-body text-sm text-gray-500 dark:text-gray-500 mt-1">als Unterlassungs-Leistung.</p>
+          </div>
+          <div class="p-6">
+            <img src="assets/images/icons/image-14.png" alt="" class="w-12 h-12 object-contain mx-auto mb-3">
+            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Schnelle Erprobung</p>
+            <p class="font-body text-sm text-gray-500 dark:text-gray-500 mt-1">statt Riesenprojekte.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="cta" class="bg-gray-900 dark:bg-black py-16 md:py-24 lg:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-gp-white">
-          Bereit fuer Hoechstleistung?
+        <h2 class="font-heading text-3xl lg:text-5xl font-bold leading-tight text-white">
+          Bereit für Höchstleistung?
         </h2>
-        <p class="font-body text-lg md:text-xl leading-relaxed text-gp-light mt-6 max-w-2xl mx-auto">
-          Ein Gespraech. Kein Verkaufspitch. Klartext ueber Dein Unternehmen.
+        <p class="font-body text-lg md:text-xl leading-relaxed text-gray-400 mt-6 max-w-2xl mx-auto">
+          Ein Gespräch. Kein Verkaufspitch. Klartext über Dein Unternehmen.
         </p>
         <div class="mt-10">
           <a href="mailto:f.gloebl@g-und-p.de"
-             class="inline-block bg-gp-red hover:bg-gp-red-hover text-gp-white font-bold text-lg md:text-xl px-10 py-4 rounded transition-all duration-200 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-black">
-            Jetzt Kontakt aufnehmen
+             class="inline-block bg-gp-red hover:bg-gp-red-hover text-white font-bold text-lg md:text-xl px-10 py-4 rounded transition-all duration-200 hover:scale-[1.02]">
+            Jetzt Klarheitsgespräch vereinbaren
           </a>
         </div>
       </div>
@@ -242,49 +457,36 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gp-dark py-12">
+  <footer class="bg-gray-100 dark:bg-gray-900 py-12 border-t border-gray-200 dark:border-gray-800">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-        <!-- Brand -->
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
         <div>
-          <span class="font-heading text-xl font-bold text-gp-white">G&amp;P</span>
-          <p class="font-body text-sm text-gp-grey mt-2">&copy; 2026 Gloebl &amp; Partner. Alle Rechte vorbehalten.</p>
+          <span class="font-heading text-2xl font-bold text-gp-red">G&amp;P</span>
+          <p class="font-body text-sm text-gray-500 mt-2">G&amp;P Management Consultants UG</p>
+          <p class="font-body text-sm text-gray-500">Birkenweg 6, 84082 Laberweinting</p>
+          <p class="font-body text-sm text-gray-500">+49 (0) 172 / 1718875 &middot; info@g-u-p.de</p>
         </div>
-        <!-- Links -->
         <div class="flex flex-wrap gap-6">
-          <a href="https://v-und-s.de" target="_blank" rel="noopener noreferrer"
-             class="font-body text-sm text-gp-grey hover:text-gp-white transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-dark">
-            V&amp;S
-          </a>
-          <a href="https://neues-management.jimdofree.com" target="_blank" rel="noopener noreferrer"
-             class="font-body text-sm text-gp-grey hover:text-gp-white transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-dark">
-            Neues Management Blog
-          </a>
-          <a href="https://v-und-s.de/impressum" target="_blank" rel="noopener noreferrer"
-             class="font-body text-sm text-gp-grey hover:text-gp-white transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-dark">
-            Impressum
-          </a>
-          <a href="https://v-und-s.de/datenschutz" target="_blank" rel="noopener noreferrer"
-             class="font-body text-sm text-gp-grey hover:text-gp-white transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-dark">
-            Datenschutz
-          </a>
+          <a href="https://v-und-s.de" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">V&amp;S</a>
+          <a href="https://neues-management.jimdofree.com" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">Neues Management</a>
+          <a href="https://v-und-s.de/impressum" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">Impressum</a>
+          <a href="https://v-und-s.de/datenschutz" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">Datenschutz</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- DSGVO Cookie/CDN disclosure banner -->
-  <div id="cookie-banner" class="hidden fixed bottom-0 inset-x-0 z-50 bg-gp-charcoal border-t border-gp-slate p-4 md:p-6">
+  <!-- DSGVO Cookie banner -->
+  <div id="cookie-banner" class="hidden fixed bottom-0 inset-x-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 shadow-lg p-4 md:p-6">
     <div class="mx-auto max-w-7xl flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
       <div class="flex-1">
-        <p class="font-heading text-base font-bold text-gp-white">Hinweis zu externen Diensten</p>
-        <p class="font-body text-sm text-gp-grey mt-1">
-          Diese Seite laedt Schriften von Google Fonts. Dabei wird Deine IP-Adresse an Google uebermittelt.
-          Mehr dazu in unserer <a href="https://v-und-s.de/datenschutz" target="_blank" rel="noopener noreferrer" class="underline hover:text-gp-white transition-colors">Datenschutzerklaerung</a>.
+        <p class="font-heading text-base font-bold text-gray-900 dark:text-white">Hinweis zu externen Diensten</p>
+        <p class="font-body text-sm text-gray-500 mt-1">
+          Diese Seite lädt Schriften von Google Fonts. Dabei wird Deine IP-Adresse an Google übermittelt.
+          <a href="https://v-und-s.de/datenschutz" target="_blank" rel="noopener noreferrer" class="underline hover:text-gp-red">Datenschutzerklärung</a>.
         </p>
       </div>
-      <button id="cookie-dismiss"
-              class="inline-block bg-gp-slate hover:bg-gp-grey text-gp-white font-bold text-sm px-6 py-2.5 rounded transition-colors duration-200 whitespace-nowrap focus-visible:ring-2 focus-visible:ring-gp-red focus-visible:ring-offset-2 focus-visible:ring-offset-gp-charcoal">
+      <button id="cookie-dismiss" class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-bold text-sm px-6 py-2.5 rounded transition-colors whitespace-nowrap">
         OK, verstanden
       </button>
     </div>
