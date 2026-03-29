@@ -4,177 +4,133 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Landing page for **G&P** (Glöbl & Partner) — a consultancy helping manufacturing companies achieve dramatic performance improvements. Single-page site with bold, striking design.
+Landing page for **G&P Management Consultants UG** (Glöbl & Partner) — a consultancy helping manufacturing companies achieve dramatic performance improvements. Single-page site with sub-pages for each topic.
 
-**Tech Stack:** Pure HTML, JavaScript, Tailwind CSS (via CDN). No build tools, no framework — open `index.html` directly in a browser.
+**Company:** G&P Management Consultants UG, Birkenweg 6, 84082 Laberweinting
+**Geschäftsführer:** Florian Glöbl
+**Parent brand:** V&S (Vollmer & Scheffczyk GmbH, v-und-s.de)
+**Themen-Blog:** neues-management.jimdofree.com
 
-**Design Direction:** Geiles Design — bold typography, dramatic visuals, high contrast, confident whitespace. NOT generic corporate. Think premium, provocative, manufacturing-meets-modern.
+## Tech Stack
 
-## Key Content Structure
+Pure HTML + Tailwind CSS v3 CDN + vanilla JS. No build tools, no npm, no frameworks.
 
-- **Hero:** Slogan "Dramatische Leistungssteigerung für produzierende Unternehmen"
-- **3 Focus Areas:**
-  1. ERP & KI — Höchstleistungs-Killer vermeiden
-  2. Orga, Mensch & Führung — Rahmen für Höchstleistungs-Entfaltung
-  3. Lean — ohne saugute Wertschöpfung ist alles andere nichts
-- **Special Section:** Sch(B)rechstunde KI — Freitags 16:00h, Anmeldung via f.gloebl@g-und-p.de
-- **Links:** Mutter-Homepage v-und-s.de, Themen auf neues-management.jimdofree.com
+```bash
+# Dev server
+python3 -m http.server 8080
 
-## Language
+# Production CSS build (optional, for GitHub Pages without CDN)
+./build.sh
+```
 
-All content is **German**. Code comments and commit messages in English are fine.
+**Tailwind Config:** Defined inline in each HTML file via `tailwind.config = { ... }` in a `<script>` tag. Custom colors: `gp-red` (#c41e3a), `gp-red-hover` (#d6263f), `gp-gold` (#c5a55a). Fonts: Space Grotesk (heading), Inter (body).
+
+**Dark/Light Mode:** Uses `darkMode: 'media'` (follows system preference). Every element needs both light and dark classes (e.g., `text-gray-900 dark:text-white`).
+
+**3-Column Layout:** Uses custom CSS class `.flex-trio` defined in `<style>` tag of index.html. Do NOT use Tailwind grid classes — they don't work reliably with the CDN. The `.flex-trio` class uses `flex: 1 1 0%; min-width: 0; overflow: hidden` on children.
+
+**4-Column Layout (Team):** Uses `.flex-quad` class — 2x2 grid with `flex-wrap: wrap` and `width: calc(50% - 0.75rem)` per item.
+
+## Site Structure
+
+```
+index.html                          # Main landing page
+organisation-fuehrung-mensch.html   # Sub-page: Organisation, Führung & Mensch
+lean.html                           # Sub-page: Lean
+erp-ki.html                         # Sub-page: ERP & KI
+leistung-am-limit.html              # Sub-page: Leistung am Limit event
+systemgestalter.html                # Sub-page: SystemGestalter Ausbildung
+```
+
+## Content & People
+
+### Team (shown on main page)
+1. **Florian Glöbl** — Geschäftsführer, Berater & Vernetzer. Photo: `assets/images/team/florian-cropped.jpg`
+2. **Benno Löffler** — Gesellschafter & Systempraktiker. Author of "Saugute Zusammenarbeit". Photo: `assets/images/team/benno-cropped.jpg`
+3. **Simone Heigl** — Trainerin, Beraterin & Coach (simoneheigl.com). Photo: `assets/images/heigl/img-00.jpg`
+4. **David Weber** — Lean-Berater & Wertschöpfungsexperte (weundd.de). Photo: `assets/images/weundd/img-05.jpg`
+
+### Three Pillars (in this order!)
+1. **Organisation, Führung & Mensch** — Strukturen statt Verhalten. Inspiriert von Metaplan, Hephaistos/Eidenschink, Simone Heigl.
+2. **Lean** — Saugute Wertschöpfung. ReaLean, Shopfloor Management, CCPM. Content von neues-management.jimdofree.com und David Weber.
+3. **ERP & KI** — Höchstleistungs-Killer vermeiden. Wertschöpfungsnahe Erprobung statt sauteure Konzepte.
+
+### Events (3 cards on main page)
+1. **Sch(B)rechstunde** — Freitags 16:00–17:00, offener Austausch zu ERP, KI, Höchstleistungskillern. Anmeldung via mailto.
+2. **Leistung am Limit** — 3-Tages-Event in den Bergen. Official site: leistung-am-limit.de
+3. **SystemGestalter** — Ausbildung in 3 Blöcken. Von V&S. Termine Sept/Okt 2026.
+
+### Core Principles (from g-u-p.de)
+- **Kernwerte:** Ehrlich. Direkt. Wirksam.
+- **Haltung:** "Organisationen erzeugen Verhalten — nicht umgekehrt."
+- **Wertversprechen:** "Primat der Wertschöpfung" — wir arbeiten am System, nicht am Individuum
+- **Manifesto:** "Schnelle Erprobung statt sauteure Konzepte / Echte Probleme lösen statt Methodik bis der Arzt kommt / Mehr Wirkung statt mehr Manntage"
+- **Contact:** f.gloebl@g-und-p.de, info@g-u-p.de, +49 (0) 172 / 1718875
+
+## Content Sources (for future research)
+
+When updating content, scrape these sites with Playwright (Cloudflare blocks curl/WebFetch):
+
+```python
+# Pattern that works:
+from playwright.sync_api import sync_playwright
+browser = p.chromium.launch(headless=False, args=['--disable-blink-features=AutomationControlled'])
+context = browser.new_context(user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) ...')
+```
+
+| Source | URL | What to get |
+|--------|-----|-------------|
+| G&P Homepage | g-u-p.de | Services, principles, team bios, images |
+| G&P Leistung am Limit | g-u-p.de/leistung-am-limit/ | Event details, PDFs |
+| V&S | v-und-s.de | Lean/Agile/TOC principles, team, testimonials |
+| V&S SystemGestalter | v-und-s.de/events-media/ausbildung-systemgestalter/ | Ausbildung details, prices |
+| Neues Management | neues-management.jimdofree.com | Provocative lean texts, Beratungsansatz |
+| Simone Heigl | simoneheigl.com | Training topics, bio |
+| David Weber | weundd.de | Lean expertise, portrait |
+| Hephaistos | hephaistos.org | Metatheorie der Veränderung |
+| Metaplan | metaplan.com/de/ | Organization theory principles |
+| Klaus Eidenschink | eidenschink.de | Systemische Beratung |
+| Leistung am Limit | leistung-am-limit.de | Official event site, booking |
 
 ## Assets
 
-- Reference photos in `bilder-landshut-asis/` (HEIC format — convert to web formats before use)
-- Reference design: https://www.g-u-p.de/
-
-## Development
-
-```bash
-# Serve locally (any simple HTTP server works)
-python3 -m http.server 8000
-# or
-npx serve .
+```
+assets/images/gup/          # Scraped from g-u-p.de (service icons, team, action photos)
+assets/images/icons/         # Transparent versions of g-u-p.de pictograms (red on transparent)
+assets/images/team/          # Cropped team portraits (use these, not gup/ originals)
+assets/images/heigl/         # Simone Heigl photos from simoneheigl.com
+assets/images/weundd/        # David Weber photos from weundd.de
+assets/images/gup-logo-transparent.png  # G&P logo (transparent bg, works on light+dark)
+assets/pdf/                  # Event flyers and programs
 ```
 
-No build step. No npm install. Just HTML + Tailwind CDN + JS.
+**Image handling:** The g-u-p.de team photos (image-20/21/22.png) have a decorative red frame baked in. Use the cropped versions in `team/` instead. For new people photos, always crop to face with `object-cover rounded-full`.
 
-<!-- GSD:project-start source:PROJECT.md -->
-## Project
+**bilder-landshut-asis/** contains handwritten concept sketches — NOT photos for the website.
 
-**G&P Landing Page**
+## Language
 
-A bold, high-impact single-page website for G&P (Glöbl & Partner), a consultancy that delivers dramatic performance improvements for manufacturing companies. The page targets Geschäftsführer and Entscheider in produzierenden Unternehmen, driving them to take action — sign up for the "Sch(B)rechstunde KI" or contact G&P directly.
+All user-facing content in **German** with proper umlauts (ü, ö, ä, ß). Never use ae/oe/ue substitutes. Use `&shy;` for soft hyphens in long compound words, `&nbsp;–` for dashes.
 
-**Core Value:** Geschäftsführer produzierende Unternehmen must feel *compelled* to act — either signing up for the Sch(B)rechstunde or reaching out to G&P. The page must radiate competence, provocation, and Höchstleistung.
+## Deployment
 
-### Constraints
+Hosted on GitHub Pages: https://bennoloeffler.github.io/gundp-webpage/
 
-- **Tech Stack**: Pure HTML + Tailwind CSS (CDN) + vanilla JS — no build tools, no npm, no frameworks
-- **Hosting**: GitHub Pages — must be fully static
-- **Assets**: HEIC photos need conversion to web formats (JPEG/WebP) before use
-- **Language**: All user-facing content in German
-<!-- GSD:project-end -->
+```bash
+# Commit locally (default during development)
+git add -A && git commit -m "description"
 
-<!-- GSD:stack-start source:research/STACK.md -->
-## Technology Stack
+# Deploy only when user says "deploy"
+git push origin master
+```
 
-## Strategy: CDN for Development, Standalone CLI for Production
-## Recommended Stack
-### Core Styling
-| Technology | Version | Purpose | Why |
-|------------|---------|---------|-----|
-| Tailwind CSS (CDN) | `@tailwindcss/browser@4` | Development styling | Zero setup, instant prototyping, full v4 features including container queries, 3D transforms, `@theme` customization. Use `<style type="text/tailwindcss">` for theme config. |
-| Tailwind CSS (Standalone CLI) | v4.2 | Production CSS build | Single binary download from GitHub releases. No Node, no npm. Generates optimized CSS file < 10KB. Run once before deploy. |
-# Download once (macOS ARM):
-# Build production CSS:
-### Animation
-| Technology | Version | Purpose | Why |
-|------------|---------|---------|-----|
-| GSAP | 3.14.2 | Scroll animations, entrance effects, timeline sequencing | Industry standard. Now 100% free (Webflow acquired GreenSock late 2024, removed paywall). ScrollTrigger plugin enables dramatic scroll-driven reveals. Tiny footprint via CDN. |
-- **vs AOS (Animate on Scroll):** AOS is stuck at v2.3.4 (7 years old, unmaintained). GSAP ScrollTrigger is actively maintained and far more powerful.
-- **vs Anime.js:** Good but less ecosystem, weaker scroll-trigger support, less documentation.
-- **vs Motion One / Web Animations API:** Promising but less battle-tested for complex timelines. GSAP's timeline API is unmatched for sequenced reveals.
-- **vs CSS-only animations:** Use CSS transitions for simple hovers/state changes. Use GSAP for scroll-triggered sequences, staggered reveals, and complex timelines that CSS cannot handle cleanly.
-### Typography (Google Fonts)
-| Font | Weight(s) | Purpose | Why |
-|------|-----------|---------|-----|
-| Space Grotesk | 500, 700 | Headings, hero text, CTAs | Geometric sans-serif with distinctive character. Bold without being aggressive. Conveys technical precision and modernity -- perfect for manufacturing/consulting. Excellent German character support (umlauts, eszett). |
-| Inter | 400, 500, 600 | Body text, descriptions, UI text | The gold standard for screen readability. Neutral enough to not compete with bold headings. Variable font with optical sizing. Exceptional at small sizes. |
-- Space Grotesk's geometric boldness for "Dramatische Leistungssteigerung" hero text radiates Kompetenz and Entschlossenheit
-- Inter's polished neutrality makes body text scannable for busy Geschaeftsfuehrer
-- Both fonts have full German character support (critical: ae, oe, ue, ss)
-- Well-established pairing recommended across multiple typography resources
-- **Germania One / Fraktur fonts:** Kitsch and unreadable. This is consulting, not a beer label.
-- **Montserrat:** Overused. Does not differentiate.
-- **Roboto:** Google's system font. Feels generic, not premium.
-- **Playfair Display / serif fonts:** Too editorial. Manufacturing consulting needs geometric confidence, not literary elegance.
-### Image Optimization
-| Format | Use Case | Why |
-|--------|----------|-----|
-| WebP | Primary web format for photos | ~30% smaller than JPEG at equivalent quality. Universal browser support (Safari 14+, Chrome, Firefox, Edge). |
-| AVIF | Progressive enhancement for hero images | ~50% smaller than JPEG. Supported in Chrome 85+, Firefox 93+, Safari 16.4+. Use as first source in `<picture>`. |
-| JPEG | Fallback only | For browsers that do not support WebP (effectively none in 2026, but good practice). |
-| SVG | Logo, icons, simple graphics | Infinitely scalable, tiny file size, style with CSS. |
-# Install once
-# Convert all HEIC to WebP (quality 80, good balance)
-# Generate AVIF versions for hero images
-### Icons
-| Technology | Purpose | Why |
-|------------|---------|-----|
-| Heroicons (inline SVG) | UI icons (arrows, phone, email, menu) | Made by Tailwind team. Copy-paste SVG, no external dependency. Matches Tailwind design language. |
-| Custom SVG | G&P logo, brand marks | Inline for instant render, no HTTP request. |
-## Infrastructure
-| Technology | Purpose | Why |
-|------------|---------|-----|
-| GitHub Pages | Hosting | Free, supports custom domains, HTTPS included, perfect for static sites. Zero server management. |
-| `<meta>` tags | SEO, Open Graph | Essential for Google indexing and social sharing previews. No build tool needed. |
-| `rel="preconnect"` | Font performance | Establishes early connection to Google Fonts CDN. Free 100-300ms savings. |
-## Performance Budget
-| Metric | Target | How |
-|--------|--------|-----|
-| First Contentful Paint | < 1.5s | Preconnect fonts, inline critical CSS, hero image priority |
-| Largest Contentful Paint | < 2.5s | Optimized hero image (WebP/AVIF), fetchpriority="high" |
-| Total page weight | < 500KB | Optimized images, minified CSS, GSAP is ~25KB gzipped |
-| CSS file (production) | < 10KB | Tailwind CLI purges unused styles |
-| JavaScript | < 50KB gzipped | GSAP core (~25KB) + ScrollTrigger (~10KB) + custom (~5KB) |
-## Alternatives Considered
-| Category | Recommended | Alternative | Why Not |
-|----------|-------------|-------------|---------|
-| CSS Framework | Tailwind v4 (CDN + CLI) | Bootstrap 5 | Bootstrap's design language is recognizable and generic. Tailwind allows fully custom bold aesthetic. |
-| CSS Framework | Tailwind v4 | Hand-written CSS | Too slow for rapid prototyping. No utility-class productivity. |
-| Animation | GSAP 3.14 | AOS 2.3.4 | AOS unmaintained (7 years). Limited to simple fade/slide. Cannot do timeline sequences. |
-| Animation | GSAP 3.14 | CSS-only | Insufficient for scroll-triggered staggered reveals. Use CSS for simple hovers. |
-| Animation | GSAP 3.14 | Anime.js | Less documentation, weaker scroll integration, smaller community. |
-| Fonts | Space Grotesk + Inter | System fonts | No brand differentiation. Looks generic. |
-| Image format | WebP + AVIF | JPEG only | 30-50% larger files. No reason to skip modern formats in 2026. |
-| Hosting | GitHub Pages | Netlify/Vercel | Overkill. No server-side features needed. GitHub Pages is simpler. |
-| Icons | Inline SVG (Heroicons) | Font Awesome CDN | Extra request, loads unused icons, FOUT risk. |
-| Build | Tailwind Standalone CLI | npm + PostCSS | Violates project constraint of no npm. Standalone CLI is a single binary. |
-## Development Workflow
-## Complete HTML Head Template
-## Sources
-- [Tailwind CSS v4 Play CDN docs](https://tailwindcss.com/docs/installation/play-cdn) -- official, HIGH confidence
-- [Tailwind CSS v4 CLI docs](https://tailwindcss.com/docs/installation/tailwind-cli) -- official, HIGH confidence
-- [Tailwind CSS v4 theme variables](https://tailwindcss.com/docs/theme) -- official, HIGH confidence
-- [GSAP now free (CSS-Tricks)](https://css-tricks.com/gsap-is-now-completely-free-even-for-commercial-use/) -- verified, HIGH confidence
-- [GSAP 3.14.2 on jsdelivr](https://www.jsdelivr.com/package/npm/gsap) -- verified, HIGH confidence
-- [GSAP ScrollTrigger docs](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) -- official, HIGH confidence
-- [Space Grotesk + Inter pairing](https://www.etienneaubertbonn.com/inter-font-pairing/) -- community, MEDIUM confidence
-- [WebP vs AVIF comparison (SpeedVitals)](https://speedvitals.com/blog/webp-vs-avif/) -- editorial, MEDIUM confidence
-- [Image optimization best practices 2025](https://www.frontendtools.tech/blog/modern-image-optimization-techniques-2025) -- editorial, MEDIUM confidence
-- [CDN to production CSS workflow](https://www.conroyp.com/articles/tailwind-cdn-to-production-optimised-css-bundle) -- community, MEDIUM confidence
-<!-- GSD:stack-end -->
+GitHub Pages is configured to serve from `master` branch root (`/`).
 
-<!-- GSD:conventions-start source:CONVENTIONS.md -->
-## Conventions
+## Key Lessons Learned
 
-Conventions not yet established. Will populate as patterns emerge during development.
-<!-- GSD:conventions-end -->
-
-<!-- GSD:architecture-start source:ARCHITECTURE.md -->
-## Architecture
-
-Architecture not yet mapped. Follow existing patterns found in the codebase.
-<!-- GSD:architecture-end -->
-
-<!-- GSD:workflow-start source:GSD defaults -->
-## GSD Workflow Enforcement
-
-Before using Edit, Write, or other file-changing tools, start work through a GSD command so planning artifacts and execution context stay in sync.
-
-Use these entry points:
-- `/gsd:quick` for small fixes, doc updates, and ad-hoc tasks
-- `/gsd:debug` for investigation and bug fixing
-- `/gsd:execute-phase` for planned phase work
-
-Do not make direct repo edits outside a GSD workflow unless the user explicitly asks to bypass it.
-<!-- GSD:workflow-end -->
-
-<!-- GSD:profile-start -->
-## Developer Profile
-
-> Profile not yet configured. Run `/gsd:profile-user` to generate your developer profile.
-> This section is managed by `generate-claude-profile` -- do not edit manually.
-<!-- GSD:profile-end -->
+- **Tailwind CDN vs grid:** Tailwind CSS v3 CDN (`cdn.tailwindcss.com`) does NOT reliably generate grid utility classes. Use custom CSS classes (`.flex-trio`, `.flex-quad`) with plain flexbox instead.
+- **GSAP `gsap.from()` hides elements:** `gsap.from(".class", { opacity: 0 })` immediately sets elements invisible. Set `opacity: 1` explicitly before GSAP runs, and use `start: "top bottom"` to trigger as soon as section enters viewport.
+- **g-u-p.de blocks scraping:** Cloudflare protected. Must use Playwright with `headless=False` and `--disable-blink-features=AutomationControlled`. LinkedIn also blocks — cannot scrape profiles.
+- **Portrait photos from g-u-p.de:** Original PNGs have red border frames. Always crop with ImageMagick: `magick input.png -gravity center -crop 55%x65%+0+0 +repage output.jpg`
+- **Live Server caching:** VS Code Live Server aggressively caches. Use `python3 -m http.server 8080` for reliable dev serving.
+- **Florian Glöbl is NOT Frank.** The email prefix `f.gloebl` stands for Florian, not Frank.
