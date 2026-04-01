@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>G&amp;P – Dramatische Leistungssteigerung für produzierende Unternehmen</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="description" content="G&amp;P Management Consultants – Ehrlich. Direkt. Wirksam. Beratung im Mittelstand.">
   <meta name="color-scheme" content="light dark">
 
@@ -131,6 +133,132 @@
       .flex-quad { flex-direction: column; }
       .flex-quad > * { width: 100%; }
     }
+
+    /* Störer – floating whitepaper teasers */
+    .stoerer {
+      position: fixed;
+      z-index: 50;
+      background: white;
+      border-left: 4px solid #c41e3a;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      max-width: 340px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      transform: translateX(-120%);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .stoerer.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .stoerer-left {
+      left: 1rem;
+      top: 35%;
+    }
+    .stoerer-left.visible { transform: translateX(0); }
+    .stoerer-right {
+      right: 1rem;
+      left: auto;
+      top: 45%;
+      transform: translateX(120%);
+    }
+    .stoerer-right.visible { transform: translateX(0); }
+    .stoerer-bottom {
+      bottom: 1.5rem;
+      left: 50%;
+      top: auto;
+      transform: translate(-50%, 120%);
+    }
+    .stoerer-bottom.visible { transform: translate(-50%, 0); }
+    .stoerer-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.75rem;
+      font-size: 1.25rem;
+      line-height: 1;
+      color: #999;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .stoerer-close:hover { color: #c41e3a; }
+    .stoerer-link:hover { text-decoration: underline; }
+
+    /* Griff / Tab – kleiner Reiter zum Wiederöffnen */
+    .stoerer-tab {
+      position: fixed;
+      z-index: 49;
+      background: #c41e3a;
+      color: white;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      white-space: nowrap;
+    }
+    .stoerer-tab.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .stoerer-tab:hover {
+      background: #d6263f;
+    }
+    .stoerer-tab-left {
+      left: 0;
+      top: 35%;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+    .stoerer-tab-right {
+      right: 0;
+      top: 45%;
+      writing-mode: vertical-lr;
+      border-radius: 0.5rem 0 0 0.5rem;
+    }
+    .stoerer-tab-bottom {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      writing-mode: horizontal-tb;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .stoerer {
+        background: #1f2937;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      }
+      .stoerer-close { color: #666; }
+    }
+    @media (max-width: 768px) {
+      .stoerer-left, .stoerer-right {
+        left: 1rem;
+        right: 1rem;
+        top: auto;
+        bottom: 1.5rem;
+        max-width: calc(100% - 2rem);
+        transform: translateY(120%);
+      }
+      .stoerer-left.visible, .stoerer-right.visible {
+        transform: translateY(0);
+      }
+      .stoerer-bottom {
+        left: 1rem;
+        right: 1rem;
+        max-width: calc(100% - 2rem);
+        transform: translateY(120%);
+      }
+      .stoerer-bottom.visible { transform: translateY(0); }
+      .stoerer-tab { display: none; }
+    }
   </style>
 </head>
 <body class="overflow-x-hidden bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
@@ -189,7 +317,7 @@
             <div class="mt-10 flex flex-wrap gap-4">
               <a href="mailto:f.gloebl@g-und-p.de"
                  class="cta-btn inline-block bg-gp-red hover:bg-gp-red-hover text-white font-bold text-lg px-8 py-4 rounded transition-all duration-200 hover:scale-[1.02]">
-                Klarheitsgespräch vereinbaren
+                Gespräch vereinbaren. Klartext. Versprochen.
               </a>
             </div>
           </div>
@@ -427,9 +555,21 @@
           <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gray-300">
             Lean war mal ein Projekt. Jetzt stauben die Boards ein. Die Wertschöpfung wird immer unproduktiver und die Verwaltung wird größer&nbsp;– aber nichts wird wirklich besser.
           </p>
+          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gray-300">
+            Und Strategie? Ja&nbsp;– haben viele. Folien. Aber wirksam? Nützlich? Energie und Ärmel zurück und ran? Fehlanzeige...
+          </p>
+          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gray-300">
+            Und weil das alles nicht funktioniert, brauchen wir ein professionelles Projektmanagement. Aber auch das nervt und nützt nichts. Projekte versanden. Die Themen sind energie- und auch nutzlos.
+          </p>
+          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gray-300 font-bold">
+            Viel Beschäftigung. Wenig Wirkung.
+          </p>
+          <p class="problem-item font-body text-lg md:text-xl leading-relaxed text-gray-300">
+            Wir haben uns in Deutschland „kaputt-professionalisiert". Das ist tragisch und muss sich ändern.
+          </p>
         </div>
         <p class="font-heading text-xl md:text-2xl font-bold text-gp-gold mt-12">
-          So wird das nix...
+          Denn: So wird das nix...
         </p>
         <p class="font-heading text-xl md:text-2xl font-bold text-white mt-8">
           Was kann man fundamental anders machen?
@@ -570,28 +710,38 @@
       </div>
     </section>
 
-    <!-- TEASER SLOGANS from README -->
-    <section class="bg-white dark:bg-gray-950 py-12 md:py-16 border-t border-gray-200 dark:border-gray-800">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="flex-trio text-center">
-          <div class="p-6">
-            <img src="assets/images/icons/image-13.png" alt="" class="w-12 h-12 object-contain mx-auto mb-3">
-            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Was macht HR NICHT?</p>
-            <p class="font-body text-sm text-gray-500 dark:text-gray-500 mt-1">Übergriffigkeit als Tabu.</p>
-          </div>
-          <div class="p-6">
-            <img src="assets/images/icons/image-10.png" alt="" class="w-12 h-12 object-contain mx-auto mb-3">
-            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Höchstleistung</p>
-            <p class="font-body text-sm text-gray-500 dark:text-gray-500 mt-1">als Unterlassungs-Leistung.</p>
-          </div>
-          <div class="p-6">
-            <img src="assets/images/icons/image-14.png" alt="" class="w-12 h-12 object-contain mx-auto mb-3">
-            <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Schnelle Erprobung</p>
-            <p class="font-body text-sm text-gray-500 dark:text-gray-500 mt-1">statt Riesenprojekte.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- STÖRER / Floating Whitepaper Teasers -->
+    <!-- Störer 1: HR -->
+    <div class="stoerer stoerer-left" id="stoerer-hr">
+      <button class="stoerer-close" aria-label="Schließen">&times;</button>
+      <img src="assets/images/icons/image-13.png" alt="" class="w-12 h-12 object-contain mb-2">
+      <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Was macht HR NICHT?</p>
+      <p class="font-body text-sm text-gray-600 dark:text-gray-400 mt-2">HR versucht nicht, Leute zu erziehen. HR arbeitet nicht an der Kultur. HR ist nicht verantwortlich dafür, dass es Menschen gut geht. HR unterlässt Übergriffigkeit. HR hilft wenn danach gefragt wird. HR dient.</p>
+      <a href="#" class="stoerer-link font-heading text-sm font-bold text-gp-red mt-3 inline-block">Whitepaper &darr; <span class="text-gray-400">(kommt bald)</span></a>
+    </div>
+    <!-- Störer 2: Höchstleistung -->
+    <div class="stoerer stoerer-right" id="stoerer-hoechstleistung">
+      <button class="stoerer-close" aria-label="Schließen">&times;</button>
+      <img src="assets/images/icons/image-10.png" alt="" class="w-12 h-12 object-contain mb-2">
+      <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Höchstleistung</p>
+      <p class="font-heading text-base text-gray-500 dark:text-gray-400">als Unterlassungs-Leistung.</p>
+      <p class="font-body text-sm text-gray-600 dark:text-gray-400 mt-2">Die meisten Höchstleistungs-Organisationen machen viel Wertschöpfung und wenig Beiwerk. Viel Vertrauensvorsprung spart aufwendige Kontrollmechanismen. Wenig Overhead. Wenige Führungskräfte&nbsp;– weil andere auch Führungsarbeit machen. Kein PMO&nbsp;– weil Leute Sachen machen. Einfach so.</p>
+      <a href="#" class="stoerer-link font-heading text-sm font-bold text-gp-red mt-3 inline-block">Whitepaper &darr; <span class="text-gray-400">(kommt bald)</span></a>
+    </div>
+    <!-- Störer 3: Schnelle Erprobung -->
+    <div class="stoerer stoerer-bottom" id="stoerer-erprobung">
+      <button class="stoerer-close" aria-label="Schließen">&times;</button>
+      <img src="assets/images/icons/image-14.png" alt="" class="w-12 h-12 object-contain mb-2">
+      <p class="font-heading text-lg font-bold text-gray-900 dark:text-white">Schnelle Erprobung</p>
+      <p class="font-heading text-base text-gray-500 dark:text-gray-400">statt Riesenprojekte.</p>
+      <p class="font-body text-sm text-gray-600 dark:text-gray-400 mt-2">Höchstleister reden immer konkret. Jede Idee kann gut sein oder scheitern. Sie reden von Erprobung. Sie beobachten, was klappt und was nicht. Sie lachen, wenn sie sich geirrt haben. Und fangen nochmal von vorne an. Würdevoll scheitern. Hartnäckig bleiben.</p>
+      <a href="#" class="stoerer-link font-heading text-sm font-bold text-gp-red mt-3 inline-block">Whitepaper &darr; <span class="text-gray-400">(kommt bald)</span></a>
+    </div>
+
+    <!-- Störer Griffe/Tabs -->
+    <div class="stoerer-tab stoerer-tab-left" id="tab-hr">HR</div>
+    <div class="stoerer-tab stoerer-tab-right" id="tab-hoechstleistung">Höchstleistung</div>
+    <div class="stoerer-tab stoerer-tab-bottom" id="tab-erprobung">Erprobung</div>
 
     <!-- FINAL CTA -->
     <section id="cta" class="bg-gray-900 dark:bg-black py-16 md:py-24 lg:py-32">
@@ -600,12 +750,13 @@
           Bereit für Höchstleistung?
         </h2>
         <p class="font-body text-lg md:text-xl leading-relaxed text-gray-400 mt-6 max-w-2xl mx-auto">
-          Ein Gespräch. Kein Verkaufspitch. Klartext über Dein Unternehmen.
+          Ein Gespräch. Du erzählst. Wir stellen Fragen. Du denkst nach.<br>
+          Und wenn Du dann nochmal sprechen willst, hat das Gespräch offenbar etwas bewirkt...
         </p>
         <div class="mt-10">
           <a href="mailto:f.gloebl@g-und-p.de"
              class="inline-block bg-gp-red hover:bg-gp-red-hover text-white font-bold text-lg md:text-xl px-10 py-4 rounded transition-all duration-200 hover:scale-[1.02]">
-            Jetzt Klarheitsgespräch vereinbaren
+            Jetzt Gespräch vereinbaren. Gute Fragen... Versprochen.
           </a>
         </div>
       </div>
@@ -624,7 +775,7 @@
           <p class="font-body text-sm text-gray-500">+49 (0) 172 / 1718875 &middot; info@g-u-p.de</p>
         </div>
         <div class="flex flex-wrap gap-6">
-          <a href="https://www.g-u-p.de" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">g-u-p.de</a>
+          <a href="https://www.g-u-p.de" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">G&amp;P</a>
           <a href="https://v-und-s.de" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">V&amp;S</a>
           <a href="https://neues-management.jimdofree.com" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">Neues Management</a>
           <a href="https://v-und-s.de/impressum" target="_blank" rel="noopener noreferrer" class="font-body text-sm text-gray-500 hover:text-gp-red transition-colors">Impressum</a>
@@ -651,5 +802,93 @@
   </div>
 
   <script src="js/main.js" defer></script>
+  <script>
+    // Störer: show one at a time while scrolling, with delays
+    (function() {
+      var stoerers = ['stoerer-hr', 'stoerer-hoechstleistung', 'stoerer-erprobung'];
+      var tabs = { 'stoerer-hr': 'tab-hr', 'stoerer-hoechstleistung': 'tab-hoechstleistung', 'stoerer-erprobung': 'tab-erprobung' };
+      var dismissed = {};
+      var currentVisible = null;
+      var showIndex = 0;
+      var SHOW_DELAY = 12000;
+      var VISIBLE_DURATION = 15000;
+
+      function hideStorer(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove('visible');
+        // Show tab/grip
+        var tab = document.getElementById(tabs[id]);
+        if (tab) tab.classList.add('visible');
+        if (currentVisible === id) currentVisible = null;
+      }
+
+      function showStorer(id) {
+        // Hide any currently visible störer
+        if (currentVisible && currentVisible !== id) hideStorer(currentVisible);
+        var el = document.getElementById(id);
+        if (!el) return;
+        // Hide tab
+        var tab = document.getElementById(tabs[id]);
+        if (tab) tab.classList.remove('visible');
+        el.classList.add('visible');
+        currentVisible = id;
+      }
+
+      // Close buttons
+      stoerers.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.querySelector('.stoerer-close').addEventListener('click', function() {
+          hideStorer(id);
+          dismissed[id] = true;
+        });
+      });
+
+      // Tab clicks – reopen störer
+      Object.keys(tabs).forEach(function(storerId) {
+        var tab = document.getElementById(tabs[storerId]);
+        if (!tab) return;
+        tab.addEventListener('click', function() {
+          showStorer(storerId);
+          // Auto-hide again after duration
+          setTimeout(function() {
+            if (currentVisible === storerId) hideStorer(storerId);
+          }, VISIBLE_DURATION);
+        });
+      });
+
+      function showNext() {
+        if (currentVisible) {
+          hideStorer(currentVisible);
+        }
+        var attempts = 0;
+        while (attempts < stoerers.length) {
+          var id = stoerers[showIndex % stoerers.length];
+          showIndex++;
+          attempts++;
+          if (!dismissed[id]) {
+            showStorer(id);
+            setTimeout(function(eid) {
+              if (currentVisible === eid) hideStorer(eid);
+            }, VISIBLE_DURATION, id);
+            break;
+          }
+        }
+      }
+
+      // Start showing after user has scrolled a bit
+      var started = false;
+      window.addEventListener('scroll', function() {
+        if (started) return;
+        if (window.scrollY > 600) {
+          started = true;
+          setTimeout(showNext, 3000);
+          setInterval(function() {
+            if (!currentVisible) showNext();
+          }, SHOW_DELAY);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

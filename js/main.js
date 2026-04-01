@@ -11,6 +11,10 @@ let mm = gsap.matchMedia();
 mm.add("(prefers-reduced-motion: no-preference)", () => {
 
   // --- Hero entrance (plays on load, no scroll trigger) ---
+  // Ensure elements are visible before GSAP animates them
+  document.querySelectorAll("#hero h1, #hero .subheadline, #hero .cta-btn").forEach(function(el) {
+    el.style.opacity = "1";
+  });
   const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
   heroTl
     .from("#hero h1", { y: 40, opacity: 0, duration: 0.8 })
