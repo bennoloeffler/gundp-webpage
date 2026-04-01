@@ -57,6 +57,7 @@ mm.add("(prefers-reduced-motion: no-preference)", () => {
   });
 
   // --- Final CTA section: fade up ---
+  document.querySelectorAll("#cta h2, #cta p, #cta a").forEach(function(el) { el.style.opacity = "1"; });
   gsap.from("#cta h2, #cta p, #cta a", {
     scrollTrigger: { trigger: "#cta", start: "top 80%", toggleActions: "play none none none" },
     y: 30, opacity: 0, duration: 0.6, stagger: 0.15, ease: "power2.out"
