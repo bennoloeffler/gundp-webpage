@@ -858,42 +858,24 @@
         if (!tab) return;
         tab.addEventListener('click', function() {
           showStorer(storerId);
-          // Auto-hide again after duration
-          setTimeout(function() {
-            if (currentVisible === storerId) hideStorer(storerId);
-          }, VISIBLE_DURATION);
         });
       });
 
-      function showNext() {
-        if (currentVisible) {
-          hideStorer(currentVisible);
-        }
-        var attempts = 0;
-        while (attempts < stoerers.length) {
-          var id = stoerers[showIndex % stoerers.length];
-          showIndex++;
-          attempts++;
-          if (!dismissed[id]) {
-            showStorer(id);
-            setTimeout(function(eid) {
-              if (currentVisible === eid) hideStorer(eid);
-            }, VISIBLE_DURATION, id);
-            break;
-          }
-        }
-      }
-
-      // Start showing after user has scrolled a bit
+      // Show each störer once, sequentially, then only via tabs
       var started = false;
       window.addEventListener('scroll', function() {
         if (started) return;
         if (window.scrollY > 600) {
           started = true;
-          setTimeout(showNext, 3000);
-          setInterval(function() {
-            if (!currentVisible) showNext();
-          }, SHOW_DELAY);
+          // Show each one once with delays
+          stoerers.forEach(function(id, i) {
+            setTimeout(function() {
+              showStorer(id);
+              setTimeout(function() {
+                if (currentVisible === id) hideStorer(id);
+              }, VISIBLE_DURATION);
+            }, i * SHOW_DELAY);
+          });
         }
       });
     })();
