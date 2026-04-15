@@ -1,3 +1,14 @@
+# G&P Webpage
+
+**Live:**
+- Website: https://bennoloeffler.github.io/gundp-webpage/
+- Pitch (HTML): https://bennoloeffler.github.io/gundp-webpage/pitch/
+- Pitch (PDF): https://bennoloeffler.github.io/gundp-webpage/pitch/pitch-gup.pdf
+
+---
+
+## Ursprünglicher Auftrag
+
 baue eine neue G&P website auf Basis des designs von: https://www.g-u-p.de/
 
 Mache EINE Landing-Page mit coolen Bildern, logo und Menschen-Fotos mit sehr einfacher Struktur:
