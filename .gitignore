@@ -9,3 +9,4 @@ reference-*.png
 
 # Original HEIC source photos (not for web)
 bilder-landshut-asis/
+*.claude-backup
